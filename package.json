@@ -61,5 +61,8 @@
     "typescript": "5.5.3",
     "typescript-eslint": "7.15.0",
     "vitest": "1.6.0"
+  },
+  "dependencies": {
+    "pnpm": "9.14.4"
   }
 }
