@@ -45,12 +45,13 @@ export const getOperationResponse = ({
   if (response.content) {
     const content = getContent(openApi, response.content);
     if (content) {
-      if (content.schema.$ref?.startsWith('#/components/responses/')) {
+      if (content.schema.$ref?.startsWith('#/components/schemas/')) {
         content.schema = getRef<OpenApiSchema>(openApi, content.schema);
       }
 
       if (content.schema.$ref) {
         const model = getType({ type: content.schema.$ref });
+        console.log('model,ref', model, content.schema.$ref);
         operationResponse.base = model.base;
         operationResponse.export = 'reference';
         operationResponse.$refs = [...operationResponse.$refs, ...model.$refs];

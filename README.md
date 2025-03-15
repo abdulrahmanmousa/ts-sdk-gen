@@ -4,33 +4,56 @@
   <p align="center">🚀 The OpenAPI to TypeScript codegen. Generate clients, SDKs, validators, and more.</p>
 </div>
 
-[Live demo](https://stackblitz.com/edit/hey-api-example?file=openapi-ts.config.ts,src%2Fclient%2Fschemas.gen.ts,src%2Fclient%2Fsdk.gen.ts,src%2Fclient%2Ftypes.gen.ts)
+## Installation
 
-## Features
+1. Clone the repository:
 
-- works with CLI, Node.js 18+, or npx
-- supports OpenAPI 2.0, 3.0, and 3.1 specifications
-- supports both JSON and YAML input files
-- generates TypeScript interfaces, SDKs, and JSON Schemas
-- Fetch API, Axios, Angular, Node.js, and XHR clients available
-- plugin ecosystem to reduce third-party boilerplate
+```bash
+git clone <repository-url>
+cd fork-hey-sdk
+```
 
-## Documentation
+2. Install dependencies:
 
-Please visit our [website](https://heyapi.dev/) for documentation, guides, migrating, and more.
+```bash
+pnpm install
+```
 
-## Sponsoring
+## if you ran into node version error change to 
 
-Love Hey API? Please consider becoming a [sponsor](https://github.com/sponsors/hey-api).
+## Configuration
 
-## GitHub Integration (coming soon)
+```typescript
+// Example configuration
+export default {
+  client: '@hey-api/client-fetch',
+  input: './openapi-schema.json',
+  output: {
+    format: 'prettier',
+    lint: 'eslint',
+    path: './generated',
+  },
+  plugins: ['@tanstack/react-query'],
+};
+```
 
-Automatically update your code when the APIs it depends on change. [Find out more](https://heyapi.dev/openapi-ts/integrations.html).
+## Building and Running
 
-## Migrating from OpenAPI Typescript Codegen?
+To build the project and run the generator with your configuration:
 
-Please read our [migration guide](https://heyapi.dev/openapi-ts/migrating.html#openapi-typescript-codegen).
+```bash
+pnpm run --recursive build && node packages/openapi-ts/bin/index.cjs -f openapi-ts.config.ts
+```
 
-## Contributing
+also run
 
-Want to get involved? Please refer to the [contributing guide](https://heyapi.dev/contributing.html).
+```bash
+pnpm add @hey-api/client-fetch
+```
+
+this will install the client
+
+This command will:
+
+1. Build all packages in the project
+2. Run the generator using your configuration file

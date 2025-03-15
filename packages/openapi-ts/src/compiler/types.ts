@@ -894,3 +894,9 @@ export const createPropertyAssignment = ({
   initializer: ts.Expression;
   name: string | ts.PropertyName;
 }) => ts.factory.createPropertyAssignment(name, initializer);
+
+export const returnSpreadExpression = ({
+  expression,
+}: {
+  expression: ts.Expression;
+}) => ts.factory.createSpreadElement(expression);

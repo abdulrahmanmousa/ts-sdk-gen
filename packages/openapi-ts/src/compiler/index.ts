@@ -50,6 +50,7 @@ export const compiler = {
   propertyAccessExpressions: transform.createPropertyAccessExpressions,
   propertyAssignment: types.createPropertyAssignment,
   returnFunctionCall: _return.createReturnFunctionCall,
+  returnSpreadExpression: types.returnSpreadExpression,
   returnStatement: _return.createReturnStatement,
   returnVariable: _return.createReturnVariable,
   safeAccessExpression: transform.createSafeAccessExpression,
