@@ -4,7 +4,7 @@ export default {
   output: {
     format: 'prettier',
     lint: 'eslint',
-    path: './generated',
+    path: '../../../sdk-tool/the_outfitters_frontned/src/sdk',
   },
   plugins: ['@tanstack/react-query'],
 };

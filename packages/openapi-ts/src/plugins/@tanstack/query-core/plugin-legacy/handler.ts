@@ -94,7 +94,7 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
     for (const [resourceName, operations] of operationsByResource) {
       // Create file
       const file = new TypeScriptFile({
-        dir: `${config.output.path}/hooks`,
+        dir: `${config.output.path}/modules`,
         name: `${resourceName}.ts`,
       });
 
@@ -154,7 +154,7 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
         // Generate regular queries
         if (
           plugin.queryOptions &&
-          (['GET', 'POST'] as ReadonlyArray<Method>).includes(operation.method)
+          (['GET'] as ReadonlyArray<Method>).includes(operation.method)
         ) {
           if (!hasQueries) {
             hasQueries = true;
@@ -173,20 +173,12 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
             typesModulePath,
           });
 
-          const { typeError } = createTypeError({
+          const { typeResponse } = createTypeResponse({
             client,
             file,
             operation,
-            pluginName: plugin.name,
             typesModulePath,
           });
-
-          // const { typeResponse } = createTypeResponse({
-          //   client,
-          //   file,
-          //   operation,
-          //   typesModulePath,
-          // });
 
           const isRequired = isOperationParameterRequired(operation.parameters);
 
@@ -223,6 +215,11 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
                   name: 'options',
                   type: typeData,
                 },
+                {
+                  isRequired: false,
+                  name: 'hookOptions',
+                  type: `Omit<QueryOptions<${typeResponse} | undefined>, 'queryKey' | 'queryFn'>`,
+                },
               ],
               statements: [
                 compiler.returnFunctionCall({
@@ -234,14 +231,6 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
                           value: compiler.arrowFunction({
                             async: true,
                             multiLine: true,
-                            parameters: [
-                              {
-                                destructure: [
-                                  { name: 'queryKey' },
-                                  { name: 'signal' },
-                                ],
-                              },
-                            ],
                             statements: [
                               compiler.constVariable({
                                 destructure: true,
@@ -253,7 +242,7 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
                                         multiLine: true,
                                         obj: [
                                           { spread: 'options' },
-                                          { spread: 'queryKey[0]' },
+                                          // { spread: 'queryKey[0]' },
                                           // { key: 'signal', shorthand: true },
                                           // { key: 'throwOnError', value: true },
                                         ],
@@ -280,6 +269,9 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
                             parameters: ['options'],
                           }),
                         },
+                        {
+                          spread: 'hookOptions',
+                        },
                       ],
                     }),
                   ],
@@ -302,7 +294,8 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
             operation,
             plugin,
             typeData,
-            typeError: typeError.name,
+            // typeError: typeError.name,
+            typeResponse,
           });
         }
 
@@ -390,6 +383,13 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
               operation,
               typesModulePath,
             });
+
+            const { typeResponse } = createTypeResponse({
+              client,
+              file,
+              operation,
+              typesModulePath,
+            });
             const { typeError } = createTypeError({
               client,
               file,
@@ -438,10 +438,6 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
             });
             file.add(queryKeyStatement);
 
-            // Create infinite query options
-            // Much more complex implementation, similar to what's in the original file
-            // ...
-
             // Create the corresponding hook function
             createUseItemHook({
               file,
@@ -450,6 +446,7 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
               plugin,
               typeData,
               typeError: typeError.name,
+              typeResponse,
             });
           }
         }
@@ -511,6 +508,7 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
             plugin,
             typeData,
             typeError: typeError.name,
+            typeResponse,
           });
         }
       }

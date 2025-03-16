@@ -149,14 +149,16 @@ export const createUseItemHook = ({
   operation,
   plugin,
   typeData,
-  // typeError,
+  typeError,
+  typeResponse,
 }: {
   file: Files[keyof Files];
   hookType: 'useQuery' | 'useMutation' | 'useInfiniteQuery';
   operation: Operation;
   plugin: any;
   typeData: string;
-  // typeError?: string;
+  typeError?: string;
+  typeResponse: string;
 }) => {
   const config = getConfig();
 
@@ -209,8 +211,8 @@ export const createUseItemHook = ({
   // Determine the hook options parameter type
   const hookOptionsType =
     hookType === 'useMutation'
-      ? `Omit<AnyUseMutationOptions, 'mutationKey' | 'mutationFn'>`
-      : `Omit<AnyUseQueryOptions, 'queryKey' | 'queryFn'>`;
+      ? `Omit<MutationOptions<${typeResponse}, ${typeError}, ${typeData}>, 'mutationKey' | 'mutationFn'>`
+      : `Omit<QueryOptions<${typeResponse} | undefined>, 'queryKey' | 'queryFn'>`;
 
   const useQueryHookStatement = compiler.constVariable({
     exportConst: true,
@@ -236,11 +238,8 @@ export const createUseItemHook = ({
                 {
                   spread: compiler.callExpression({
                     functionName: OptionsFunctionName,
-                    parameters: ['dataOptions'],
+                    parameters: ['dataOptions', 'hookOptions'],
                   }),
-                },
-                {
-                  spread: 'hookOptions',
                 },
               ],
             }),
@@ -258,12 +257,14 @@ export const createUseItemHook = ({
     module: plugin.name,
     name: hookType,
   });
-  file.import({
-    module: '@tanstack/react-query',
-    name: 'AnyUseQueryOptions',
-  });
-  file.import({
-    module: '@tanstack/react-query',
-    name: 'AnyUseMutationOptions',
-  });
+  hookType === 'useQuery' &&
+    file.import({
+      module: '@tanstack/react-query',
+      name: 'QueryOptions',
+    });
+  hookType === 'useMutation' &&
+    file.import({
+      module: '@tanstack/react-query',
+      name: 'MutationOptions',
+    });
 };

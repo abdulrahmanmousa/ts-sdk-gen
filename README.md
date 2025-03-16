@@ -19,7 +19,11 @@ cd fork-hey-sdk
 pnpm install
 ```
 
-## if you ran into node version error change to 
+## if you ran into node version error change to latest node version
+
+```bash
+nvm use 23
+```
 
 ## Configuration
 

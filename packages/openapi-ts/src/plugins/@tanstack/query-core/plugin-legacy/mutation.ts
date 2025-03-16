@@ -27,6 +27,11 @@ export const createMutationOptions = ({
         name: 'options',
         type: `Partial<${typeData}>`,
       },
+      {
+        isRequired: false,
+        name: 'hookOptions',
+        type: `Omit<MutationOptions<${typeResponse}, ${typeError.name}, ${typeData}>, 'mutationKey' | 'mutationFn'>`,
+      },
     ],
     statements: [
       compiler.constVariable({
@@ -74,6 +79,9 @@ export const createMutationOptions = ({
                   }),
                 ],
               }),
+            },
+            {
+              spread: 'hookOptions',
             },
           ],
         }),
