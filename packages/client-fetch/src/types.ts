@@ -96,6 +96,13 @@ export interface Config<ThrowOnError extends boolean = boolean>
    * @default false
    */
   throwOnError?: ThrowOnError;
+
+  /**
+   * Use qs library for query serialization. This option is only available when
+   * using the `qs` package.
+   * @default false
+   */
+  useQsSerializer?: boolean;
 }
 
 export interface RequestOptionsBase<

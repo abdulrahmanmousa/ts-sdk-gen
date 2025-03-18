@@ -2,6 +2,7 @@ import type { Client, Config, RequestOptions } from './types';
 import {
   createConfig,
   createInterceptors,
+  createQsQuerySerializer,
   createQuerySerializer,
   getParseAs,
   getUrl,
@@ -32,7 +33,9 @@ export const createClient = (config: Config = {}): Client => {
       querySerializer:
         typeof options.querySerializer === 'function'
           ? options.querySerializer
-          : createQuerySerializer(options.querySerializer),
+          : options.useQsSerializer
+            ? createQsQuerySerializer(options.querySerializer)
+            : createQuerySerializer(options.querySerializer),
       url: options.url,
     });
     return url;

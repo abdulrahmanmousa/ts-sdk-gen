@@ -1,3 +1,5 @@
+import qs from 'qs';
+
 import type { Config } from './types';
 
 interface PathSerializer {
@@ -319,6 +321,47 @@ export const createQuerySerializer = <T = unknown>({
     }
     return search.join('&');
   };
+  return querySerializer;
+};
+
+// Helper function to map array styles to qs arrayFormat
+function mapArrayFormatStyle(
+  style?: ArrayStyle,
+): qs.IStringifyOptions['arrayFormat'] {
+  switch (style) {
+    case 'form':
+      return 'brackets';
+    case 'spaceDelimited':
+      return 'repeat'; // closest approximation
+    case 'pipeDelimited':
+      return 'comma'; // closest approximation
+    default:
+      return 'brackets';
+  }
+}
+
+/**
+ * Creates a query serializer using the qs library
+ */
+export const createQsQuerySerializer = <T = unknown>({
+  allowReserved,
+  array,
+  object,
+}: QuerySerializerOptions = {}) => {
+  // Map our options to qs options
+  const qsOptions: qs.IStringifyOptions = {
+    allowDots: object?.style === 'deepObject',
+    arrayFormat: mapArrayFormatStyle(array?.style),
+    encode: !allowReserved,
+    // explode: array?.explode ?? true,
+  };
+
+  // Return the serializer function
+  const querySerializer = (queryParams: T) => {
+    if (!queryParams || typeof queryParams !== 'object') return '';
+    return qs.stringify(queryParams as Record<string, any>, qsOptions);
+  };
+
   return querySerializer;
 };
 

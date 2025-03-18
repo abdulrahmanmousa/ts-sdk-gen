@@ -51,7 +51,6 @@ export const getOperationResponse = ({
 
       if (content.schema.$ref) {
         const model = getType({ type: content.schema.$ref });
-        console.log('model,ref', model, content.schema.$ref);
         operationResponse.base = model.base;
         operationResponse.export = 'reference';
         operationResponse.$refs = [...operationResponse.$refs, ...model.$refs];
