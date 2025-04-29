@@ -7,18 +7,13 @@ description: Learn about and discover available plugins.
 
 Every generated file in your output is created by a plugin. You already learned about the default plugins in [Output](/openapi-ts/output). This page contains all native plugins and shows you how to create your own.
 
-## Hey API
+## SDK Tool
 
-Apart from being responsible for the default output, Hey API plugins are the foundation for other plugins. Instead of creating their own primitives, other plugins can reuse the artifacts from Hey API plugins. This results in smaller output and a better user experience.
-
-- `@hey-api/schemas` - export OpenAPI definitions as JavaScript objects
-- `@hey-api/sdk` - robust and polished SDKs
-- `@hey-api/transformers` - response data transformer functions
-- `@hey-api/typescript` - TypeScript interfaces and enums
+Apart from being responsible for the default output, SDK Tool plugins are the foundation for other plugins. Instead of creating their own primitives, other plugins can reuse the artifacts from SDK Tool plugins. This results in smaller output and a better user experience.
 
 ## Third Party
 
-These plugins help reduce boilerplate associated with third-party dependencies. Hey API natively supports the most popular packages. Please open an issue on [GitHub](https://github.com/hey-api/openapi-ts/issues) if you'd like us to support your favorite package.
+These plugins help reduce boilerplate associated with third-party dependencies. SDK Tool natively supports the most popular packages. Please open an issue on [GitHub](https://github.com/abdulrahmanmousa/sdk-tool/issues) if you'd like us to support your favorite package.
 
 - [`@tanstack/angular-query-experimental`](/openapi-ts/tanstack-query) - TanStack Query functions and query keys
 - [`@tanstack/react-query`](/openapi-ts/tanstack-query) - TanStack Query functions and query keys
@@ -32,12 +27,12 @@ These plugins help reduce boilerplate associated with third-party dependencies. 
 
 Featured community plugins.
 
-- [add plugin](https://github.com/hey-api/openapi-ts/pulls)
+- [add plugin](https://github.com/abdulrahmanmousa/sdk-tool/pulls)
 
 ## Custom
 
 ::: warning
-Plugins API is in development. The interface might change before it becomes stable. We encourage you to leave feedback on [GitHub](https://github.com/hey-api/openapi-ts/issues).
+Plugins API is in development. The interface might change before it becomes stable. We encourage you to leave feedback on [GitHub](https://github.com/abdulrahmanmousa/sdk-tool/issues).
 :::
 
 If the existing plugins do not handle your use case or you're working with proprietary packages, you might want to create your own plugin.
@@ -146,7 +141,7 @@ export const handler: PluginHandler<Config> = ({ context, plugin }) => {
 
 :::
 
-And that's it! We can now register our plugin in the Hey API configuration.
+And that's it! We can now register our plugin in the SDK Tool configuration.
 
 ```js
 import { defineConfig } from './src/my-plugin';
@@ -162,3 +157,7 @@ export default {
   ],
 };
 ```
+
+## Note
+
+This repository has been separated from the Hey API repository.
