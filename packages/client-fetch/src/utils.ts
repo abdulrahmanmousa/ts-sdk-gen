@@ -624,6 +624,9 @@ export const createConfig = (override: Config = {}): Config => ({
   fetch: globalThis.fetch,
   headers: defaultHeaders,
   parseAs: 'auto',
-  querySerializer: defaultQuerySerializer,
+  querySerializer:
+    override.useQsSerializer !== false
+      ? createQsQuerySerializer()
+      : defaultQuerySerializer,
   ...override,
 });

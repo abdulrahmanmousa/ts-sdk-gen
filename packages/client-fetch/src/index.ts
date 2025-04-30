@@ -27,15 +27,15 @@ export const createClient = (config: Config = {}): Client => {
 
   const buildUrl: Client['buildUrl'] = (options) => {
     const url = getUrl({
-      baseUrl: options.baseUrl ?? '',
+      baseUrl: options.baseUrl ?? _config.baseUrl ?? '',
       path: options.path,
       query: options.query,
       querySerializer:
         typeof options.querySerializer === 'function'
           ? options.querySerializer
-          : options.useQsSerializer
-            ? createQsQuerySerializer(options.querySerializer)
-            : createQuerySerializer(options.querySerializer),
+          : options.useQsSerializer !== false
+            ? createQsQuerySerializer(options.querySerializerOptions)
+            : createQuerySerializer(options.querySerializerOptions),
       url: options.url,
     });
     return url;
@@ -63,6 +63,13 @@ export const createClient = (config: Config = {}): Client => {
     // remove Content-Type header if body is empty to avoid sending invalid requests
     if (!opts.body) {
       opts.headers.delete('Content-Type');
+    }
+
+    // Make sure we're using the qs serializer consistently
+    if (opts.useQsSerializer !== false && !opts.querySerializer) {
+      opts.querySerializer = createQsQuerySerializer(
+        opts.querySerializerOptions,
+      );
     }
 
     const url = buildUrl(opts);
@@ -177,6 +184,8 @@ export type {
 } from './types';
 export {
   createConfig,
+  createQsQuerySerializer,
+  createQuerySerializer,
   formDataBodySerializer,
   jsonBodySerializer,
   type QuerySerializerOptions,

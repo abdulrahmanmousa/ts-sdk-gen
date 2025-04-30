@@ -100,6 +100,7 @@ const logClientMessage = ({ config }: { config: Config }) => {
     case 'legacy/axios':
       return console.log('✨ Creating Axios client');
     case '@hey-api/client-fetch':
+    case '@fork-hey-sdk/client-fetch':
     case 'legacy/fetch':
       return console.log('✨ Creating Fetch client');
     case 'legacy/node':

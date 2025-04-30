@@ -86,6 +86,10 @@ export interface Config<ThrowOnError extends boolean = boolean>
    */
   querySerializer?: QuerySerializer | QuerySerializerOptions;
   /**
+   * Options to pass to the query serializer. Used when creating a new query serializer.
+   */
+  querySerializerOptions?: QuerySerializerOptions;
+  /**
    * A function for transforming response data before it's returned to the
    * caller function. This is an ideal place to post-process server data,
    * e.g. convert date ISO strings into native Date objects.

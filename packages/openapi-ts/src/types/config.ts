@@ -8,6 +8,7 @@ import type {
 export const CLIENTS = [
   '@hey-api/client-axios',
   '@hey-api/client-fetch',
+  '@fork-hey-sdk/client-fetch',
   'legacy/angular',
   'legacy/axios',
   'legacy/fetch',
