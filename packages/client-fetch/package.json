@@ -1,5 +1,5 @@
 {
-  "name": "@fork-hey-sdk/client-fetch",
+  "name": "client-fetch",
   "version": "0.1.0",
   "description": "🚀 Fetch API client for `@fork-hey-sdk/openapi-ts` codegen.",
   "homepage": "https://github.com/abdulrahmanmousa/client-fetch",
