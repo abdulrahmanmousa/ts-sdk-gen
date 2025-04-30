@@ -2,7 +2,7 @@
   "name": "openapi-ts-monorepo",
   "version": "0.1.0",
   "description": "Public @hey-api monorepo",
-  "private": true,
+  "private": false,
   "homepage": "https://heyapi.dev",
   "repository": {
     "type": "git",
