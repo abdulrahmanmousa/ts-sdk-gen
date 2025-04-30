@@ -193,7 +193,6 @@ export const createNamedImportDeclarations = ({
       alias: item.alias,
       asType: hasNonTypeImport && item.asType,
       name: item.name,
-      useTypeKeyword: item.useTypeKeyword,
     });
   });
   const namedBindings = ts.factory.createNamedImports(elements);

@@ -8,7 +8,6 @@ export interface ImportExportItemObject {
   alias?: string;
   asType?: boolean;
   name: string;
-  useTypeKeyword?: boolean;
 }
 
 const printer = ts.createPrinter({
@@ -102,28 +101,13 @@ export const ots = {
     }
     return ts.factory.createExportSpecifier(asType, undefined, nameNode);
   },
-  import: ({
-    alias,
-    asType = false,
-    name,
-    useTypeKeyword = false,
-  }: ImportExportItemObject) => {
-    // If useTypeKeyword is true, we'll prefix the name with "type " in the import
-    const nameText = useTypeKeyword ? `type ${name}` : name;
-    const nameNode = createIdentifier({ text: nameText });
+  import: ({ alias, asType = false, name }: ImportExportItemObject) => {
+    const nameNode = createIdentifier({ text: name });
     if (alias) {
       const aliasNode = createIdentifier({ text: alias });
-      return ts.factory.createImportSpecifier(
-        asType && !useTypeKeyword,
-        nameNode,
-        aliasNode,
-      );
+      return ts.factory.createImportSpecifier(asType, nameNode, aliasNode);
     }
-    return ts.factory.createImportSpecifier(
-      asType && !useTypeKeyword,
-      undefined,
-      nameNode,
-    );
+    return ts.factory.createImportSpecifier(asType, undefined, nameNode);
   },
   /**
    * Create a numeric expression, handling negative numbers.

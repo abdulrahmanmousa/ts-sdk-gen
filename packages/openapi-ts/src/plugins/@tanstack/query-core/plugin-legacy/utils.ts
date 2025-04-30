@@ -42,7 +42,6 @@ export const createTypeData = ({
         asType: true,
         module: typesModulePath,
         name,
-        useTypeKeyword: true,
       });
     },
   });
@@ -81,7 +80,6 @@ export const createTypeError = ({
         asType: true,
         module: typesModulePath,
         name,
-        useTypeKeyword: true,
       });
     },
   });
@@ -95,7 +93,6 @@ export const createTypeError = ({
       asType: true,
       module: pluginName,
       name: 'DefaultError',
-      useTypeKeyword: true,
     });
   }
 
@@ -104,7 +101,6 @@ export const createTypeError = ({
       asType: true,
       module: 'axios',
       name: 'AxiosError',
-      useTypeKeyword: true,
     });
     typeError = {
       ...axiosError,
@@ -138,7 +134,6 @@ export const createTypeResponse = ({
         asType: true,
         module: typesModulePath,
         name: imported,
-        useTypeKeyword: true,
       });
     },
   });
@@ -264,16 +259,12 @@ export const createUseItemHook = ({
   });
   hookType === 'useQuery' &&
     file.import({
-      asType: true,
       module: '@tanstack/react-query',
       name: 'QueryOptions',
-      useTypeKeyword: true,
     });
   hookType === 'useMutation' &&
     file.import({
-      asType: true,
       module: '@tanstack/react-query',
       name: 'MutationOptions',
-      useTypeKeyword: true,
     });
 };

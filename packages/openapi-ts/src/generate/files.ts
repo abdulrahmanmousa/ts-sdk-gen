@@ -155,11 +155,9 @@ export class TypeScriptFile {
    */
   public import({
     module,
-    useTypeKeyword,
     ...importedItem
   }: ImportExportItemObject & {
     module: string;
-    useTypeKeyword?: boolean;
   }): ImportExportItemObject {
     let moduleMap = this._imports.get(module);
 
@@ -173,10 +171,8 @@ export class TypeScriptFile {
       return match;
     }
 
-    // Include useTypeKeyword in the import item
-    const finalImportedItem = { ...importedItem, useTypeKeyword };
-    moduleMap.set(importedItem.name, finalImportedItem);
-    return finalImportedItem;
+    moduleMap.set(importedItem.name, importedItem);
+    return importedItem;
   }
 
   public isEmpty() {
