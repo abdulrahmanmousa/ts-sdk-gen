@@ -1,5 +1,5 @@
 {
-  "name": "@fork-hey-sdk/openapi-ts",
+  "name": "@ts-sdk-gen/openapi-ts",
   "version": "0.0.1",
   "description": "🚀 The OpenAPI to TypeScript codegen. Generate clients, SDKs, validators, and more. Forked from @hey-api/openapi-ts.",
   "homepage": "https://github.com/abdulrahmanmousa/ts-sdk-gen",
