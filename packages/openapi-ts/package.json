@@ -1,22 +1,19 @@
 {
-  "name": "@hey-api/openapi-ts",
-  "version": "0.57.1",
-  "description": "🚀 The OpenAPI to TypeScript codegen. Generate clients, SDKs, validators, and more.",
-  "homepage": "https://heyapi.dev/",
+  "name": "@fork-hey-sdk/openapi-ts",
+  "version": "0.5.0",
+  "description": "🚀 The OpenAPI to TypeScript codegen. Generate clients, SDKs, validators, and more. Forked from @hey-api/openapi-ts.",
+  "homepage": "https://github.com/abdulrahmanmousa/fork-hey-sdk",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hey-api/openapi-ts.git"
+    "url": "git+https://github.com/abdulrahmanmousa/fork-hey-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/hey-api/openapi-ts/issues"
+    "url": "https://github.com/abdulrahmanmousa/fork-hey-sdk/issues"
   },
-  "license": "FSL-1.1-MIT",
+  "license": "MIT",
   "author": {
-    "email": "lmenus@lmen.us",
-    "name": "Lubos Menus",
-    "url": "https://lmen.us"
+    "name": "Abdulrahman Mousa"
   },
-  "funding": "https://github.com/sponsors/hey-api",
   "keywords": [
     "angular",
     "axios",
@@ -98,8 +95,8 @@
     "@angular/platform-browser": "19.0.0",
     "@angular/platform-browser-dynamic": "19.0.0",
     "@angular/router": "19.0.0",
-    "@hey-api/client-axios": "workspace:*",
-    "@hey-api/client-fetch": "workspace:*",
+    "@fork-hey-sdk/client-axios": "workspace:*",
+    "@fork-hey-sdk/client-fetch": "workspace:*",
     "@tanstack/angular-query-experimental": "5.61.3",
     "@tanstack/react-query": "5.61.3",
     "@tanstack/solid-query": "5.51.21",

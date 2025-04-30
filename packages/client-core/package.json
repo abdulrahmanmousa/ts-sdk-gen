@@ -1,16 +1,16 @@
 {
-  "name": "@hey-api/client-core",
-  "version": "0.1.2",
+  "name": "@fork-hey-sdk/client-core",
+  "version": "0.5.0",
   "private": true,
   "type": "module",
-  "description": "Core utilities for type-safe @hey-api/openapi-ts clients",
-  "homepage": "https://heyapi.dev/",
+  "description": "Core utilities for type-safe @fork-hey-sdk/openapi-ts clients",
+  "homepage": "https://github.com/abdulrahmanmousa/fork-hey-sdk",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hey-api/openapi-ts.git"
+    "url": "git+https://github.com/abdulrahmanmousa/fork-hey-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/hey-api/openapi-ts/issues"
+    "url": "https://github.com/abdulrahmanmousa/fork-hey-sdk/issues"
   },
   "license": "MIT",
   "exports": {

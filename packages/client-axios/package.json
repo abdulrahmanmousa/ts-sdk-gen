@@ -1,22 +1,19 @@
 {
-  "name": "@hey-api/client-axios",
-  "version": "0.2.11",
-  "description": "🚀 Axios client for `@hey-api/openapi-ts` codegen.",
-  "homepage": "https://heyapi.dev/",
+  "name": "@fork-hey-sdk/client-axios",
+  "version": "0.5.0",
+  "description": "🚀 Axios client for `@fork-hey-sdk/openapi-ts` codegen.",
+  "homepage": "https://github.com/abdulrahmanmousa/fork-hey-sdk",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hey-api/openapi-ts.git"
+    "url": "git+https://github.com/abdulrahmanmousa/fork-hey-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/hey-api/openapi-ts/issues"
+    "url": "https://github.com/abdulrahmanmousa/fork-hey-sdk/issues"
   },
   "license": "MIT",
   "author": {
-    "email": "lmenus@lmen.us",
-    "name": "Lubos Menus",
-    "url": "https://lmen.us"
+    "name": "Abdulrahman Mousa"
   },
-  "funding": "https://github.com/sponsors/hey-api",
   "keywords": [
     "axios",
     "client",

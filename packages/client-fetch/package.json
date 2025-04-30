@@ -1,18 +1,18 @@
 {
   "name": "@fork-hey-sdk/client-fetch",
   "version": "0.1.0",
-  "description": "🚀 Fetch API client for `@fork-hey-api/openapi-ts` codegen.",
-  "homepage": "https://heyapi.dev/",
+  "description": "🚀 Fetch API client for `@fork-hey-sdk/openapi-ts` codegen.",
+  "homepage": "https://github.com/abdulrahmanmousa/fork-hey-sdk",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fork-hey-api/openapi-ts.git"
+    "url": "git+https://github.com/abdulrahmanmousa/fork-hey-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/fork-hey-api/openapi-ts/issues"
+    "url": "https://github.com/abdulrahmanmousa/fork-hey-sdk/issues"
   },
   "license": "MIT",
   "author": {
-    "name": "fork-hey-api"
+    "name": "Abdulrahman Mousa"
   },
   "keywords": [
     "client",
