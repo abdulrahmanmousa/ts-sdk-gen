@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "🚀 Fetch API client for `@abdulrahmanmousa/openapi-ts` codegen.",
   "license": "MIT",
-  "author": {
-    "name": "Abdulrahman Mousa"
-  },
+  "author": "Abdulrahman Mousa",
   "private": false,
   "keywords": [
     "client",
@@ -62,5 +60,8 @@
   },
   "devDependencies": {
     "@types/qs": "^6.9.18"
+  },
+  "directories": {
+    "test": "test"
   }
 }
