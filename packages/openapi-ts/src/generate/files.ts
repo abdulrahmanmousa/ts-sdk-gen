@@ -11,6 +11,7 @@ import type { StringCase } from '../types/config';
 import { reservedWordsRegExp } from '../utils/regexp';
 import { stringCase } from '../utils/stringCase';
 import { ensureDirSync } from './utils';
+//
 
 interface Identifier {
   /**
