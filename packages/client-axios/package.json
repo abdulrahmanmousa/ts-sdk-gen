@@ -1,5 +1,5 @@
 {
-  "name": "@fork-hey-sdk/client-axios",
+  "name": "@ts-sdk-gen/client-axios",
   "version": "1.0.0",
   "description": "🚀 Axios client for `@fork-hey-sdk/openapi-ts` codegen.",
   "homepage": "https://github.com/abdulrahmanmousa/fork-hey-sdk",

@@ -1,5 +1,5 @@
 {
-  "name": "fork-hey-sdk",
+  "name": "@ts-sdk-gen/openapi-ts",
   "version": "0.1.0",
   "description": "Public @hey-api monorepo",
   "private": false,
