@@ -1,12 +1,7 @@
 {
-  "name": "client-fetch",
-  "version": "0.1.0",
-  "description": "🚀 Fetch API client for `@fork-hey-sdk/openapi-ts` codegen.",
-  "homepage": "https://github.com/abdulrahmanmousa/client-fetch",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/abdulrahmanmousa/client-fetch.git"
-  },
+  "name": "@fork-hey-sdk/client-fetch",
+  "version": "1.0.0",
+  "description": "🚀 Fetch API client for `@abdulrahmanmousa/openapi-ts` codegen.",
   "license": "MIT",
   "author": {
     "name": "Abdulrahman Mousa"
@@ -48,6 +43,9 @@
     "LICENSE.md",
     "src"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup && pnpm check-exports",
     "check-exports": "attw --pack .",

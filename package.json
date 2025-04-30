@@ -13,6 +13,9 @@
     "name": "fork-hey-sdk"
   },
   "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "pnpm --recursive build",
     "changeset": "changeset",
