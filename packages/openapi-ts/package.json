@@ -1,6 +1,6 @@
 {
-  "name": "@ts-sdk-gen/openapi-ts",
-  "version": "0.5.0",
+  "name": "@fork-hey-sdkn/openapi-ts",
+  "version": "0.0.1",
   "description": "🚀 The OpenAPI to TypeScript codegen. Generate clients, SDKs, validators, and more. Forked from @hey-api/openapi-ts.",
   "homepage": "https://github.com/abdulrahmanmousa/ts-sdk-gen",
   "repository": {
@@ -11,9 +11,7 @@
     "url": "https://github.com/abdulrahmanmousa/ts-sdk-gen/issues"
   },
   "license": "MIT",
-  "author": {
-    "name": "Abdulrahman Mousa"
-  },
+  "author": "Abdulrahman Mousa",
   "keywords": [
     "angular",
     "axios",
@@ -118,5 +116,8 @@
     "tslib": "2.8.1",
     "typescript": "5.5.3",
     "zod": "3.23.8"
+  },
+  "directories": {
+    "test": "test"
   }
 }
