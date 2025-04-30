@@ -259,12 +259,20 @@ export const createUseItemHook = ({
   });
   hookType === 'useQuery' &&
     file.import({
+      asType: true,
       module: '@tanstack/react-query',
       name: 'QueryOptions',
     });
   hookType === 'useMutation' &&
     file.import({
+      asType: true,
       module: '@tanstack/react-query',
       name: 'MutationOptions',
+    });
+  hookType === 'useInfiniteQuery' &&
+    file.import({
+      asType: true,
+      module: '@tanstack/react-query',
+      name: 'InfiniteQueryOptions',
     });
 };
