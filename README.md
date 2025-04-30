@@ -10,7 +10,7 @@
 
 ```bash
 git clone <repository-url>
-cd fork-hey-sdk
+cd ts-sdk-gen
 ```
 
 2. Install dependencies:

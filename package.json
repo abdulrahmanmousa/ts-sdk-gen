@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "description": "Public @hey-api monorepo",
   "private": false,
-  "homepage": "https://github.com/abdulrahmanmousa/fork-hey-sdk.git",
+  "homepage": "https://github.com/abdulrahmanmousa/ts-sdk-gen.git",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abdulrahmanmousa/fork-hey-sdk.git"
+    "url": "git+https://github.com/abdulrahmanmousa/ts-sdk-gen.git"
   },
   "license": "MIT",
   "author": {
-    "name": "fork-hey-sdk"
+    "name": "ts-sdk-gen"
   },
   "type": "module",
   "workspaces": [

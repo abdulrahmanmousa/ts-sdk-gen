@@ -1,14 +1,14 @@
 {
-  "name": "@fork-hey-sdk/openapi-ts",
+  "name": "@ts-sdk-gen/openapi-ts",
   "version": "0.5.0",
   "description": "🚀 The OpenAPI to TypeScript codegen. Generate clients, SDKs, validators, and more. Forked from @hey-api/openapi-ts.",
-  "homepage": "https://github.com/abdulrahmanmousa/fork-hey-sdk",
+  "homepage": "https://github.com/abdulrahmanmousa/ts-sdk-gen",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abdulrahmanmousa/fork-hey-sdk.git"
+    "url": "git+https://github.com/abdulrahmanmousa/ts-sdk-gen.git"
   },
   "bugs": {
-    "url": "https://github.com/abdulrahmanmousa/fork-hey-sdk/issues"
+    "url": "https://github.com/abdulrahmanmousa/ts-sdk-gen/issues"
   },
   "license": "MIT",
   "author": {
@@ -95,8 +95,8 @@
     "@angular/platform-browser": "19.0.0",
     "@angular/platform-browser-dynamic": "19.0.0",
     "@angular/router": "19.0.0",
-    "@fork-hey-sdk/client-axios": "workspace:*",
-    "@fork-hey-sdk/client-fetch": "workspace:*",
+    "@ts-sdk-gen/client-axios": "workspace:*",
+    "@ts-sdk-gen/client-fetch": "workspace:*",
     "@tanstack/angular-query-experimental": "5.61.3",
     "@tanstack/react-query": "5.61.3",
     "@tanstack/solid-query": "5.51.21",

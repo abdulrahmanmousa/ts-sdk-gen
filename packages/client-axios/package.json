@@ -1,15 +1,7 @@
 {
   "name": "@ts-sdk-gen/client-axios",
   "version": "1.0.0",
-  "description": "🚀 Axios client for `@fork-hey-sdk/openapi-ts` codegen.",
-  "homepage": "https://github.com/abdulrahmanmousa/fork-hey-sdk",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/abdulrahmanmousa/fork-hey-sdk.git"
-  },
-  "bugs": {
-    "url": "https://github.com/abdulrahmanmousa/fork-hey-sdk/issues"
-  },
+  "description": "🚀 Axios client for `@ts-sdk-gen/openapi-ts` codegen.",
   "license": "MIT",
   "author": {
     "name": "Abdulrahman Mousa"
