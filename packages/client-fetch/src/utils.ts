@@ -359,7 +359,7 @@ export const createQsQuerySerializer = <T = unknown>({
   // Return the serializer function
   const querySerializer = (queryParams: T) => {
     if (!queryParams || typeof queryParams !== 'object') return '';
-    console.log(queryParams, 'queryParams');
+    // console.log(queryParams, 'queryParams');
     let finalQueryParams = queryParams;
     if ((queryParams as any)?.query?.query) {
       finalQueryParams = (queryParams as any)?.query;
