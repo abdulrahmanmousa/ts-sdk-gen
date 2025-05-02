@@ -124,7 +124,7 @@ export const watchFile = ({
       return false;
     } catch (error) {
       // if (error..code === 'UND_ERR_CONNECT_TIMEOUT') return false;
-      console.log(error, 'error');
+      console.log(error, 'error', error.cause, 'code');
       console.error(`❌ Error checking remote file ${filePath}:`, error);
       return false;
     }
