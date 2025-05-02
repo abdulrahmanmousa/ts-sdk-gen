@@ -1,6 +1,6 @@
 {
   "name": "@ts-sdk-gen/client-fetch",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "🚀 Fetch API client for `@abdulrahmanmousa/openapi-ts` codegen.",
   "license": "MIT",
   "author": "Abdulrahman Mousa",
