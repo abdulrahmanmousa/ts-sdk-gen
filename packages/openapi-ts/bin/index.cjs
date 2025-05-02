@@ -71,7 +71,9 @@ const processParams = (obj, booleanKeys) => {
 async function start() {
   let userConfig;
   try {
-    const { createClient } = require(resolve(__dirname, '../dist/index.cjs'));
+    const { createClient, initConfigs } = require(
+      resolve(__dirname, '../dist/index.cjs'),
+    );
     userConfig = processParams(params, [
       'dryRun',
       'experimentalParser',
@@ -83,8 +85,21 @@ async function start() {
     } else if (params.plugins) {
       userConfig.plugins = params.plugins;
     }
+
+    const configs = await initConfigs(userConfig);
     await createClient(userConfig);
-    process.exit(0);
+    let watchEnabled = false;
+    // Process each config
+    for (const config of configs) {
+      // Set up file watching if enabled
+      if (config.watch.enabled) {
+        watchEnabled = true;
+      }
+    }
+
+    if (!watchEnabled) {
+      process.exit(0);
+    }
   } catch (error) {
     if (!userConfig?.dryRun) {
       const logName = `openapi-ts-error-${Date.now()}.log`;

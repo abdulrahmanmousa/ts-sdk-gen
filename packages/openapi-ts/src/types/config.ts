@@ -23,6 +23,27 @@ export type Formatters = 'biome' | 'prettier';
 
 export type Linters = 'biome' | 'eslint' | 'oxlint';
 
+export interface Watch {
+  /**
+   * Enable watch mode?
+   *
+   * @default false
+   */
+  enabled: boolean;
+  /**
+   * Interval between file checks in milliseconds
+   *
+   * @default 60000
+   */
+  interval: number;
+  /**
+   * Timeout in milliseconds after which to stop watching
+   *
+   * @default 0
+   */
+  timeout: number;
+}
+
 export type StringCase =
   | 'camelCase'
   | 'PascalCase'
@@ -206,13 +227,26 @@ export interface ClientConfig {
    * @default true
    */
   useOptions?: boolean;
+  /**
+   * Watch mode configuration
+   *
+   * @default false (disabled)
+   */
+  watch?: boolean | number | Watch;
 }
 
 export interface UserConfig extends ClientConfig {}
 
 export type Config = Omit<
   Required<ClientConfig>,
-  'base' | 'client' | 'input' | 'name' | 'output' | 'plugins' | 'request'
+  | 'base'
+  | 'client'
+  | 'input'
+  | 'name'
+  | 'output'
+  | 'plugins'
+  | 'request'
+  | 'watch'
 > &
   Pick<ClientConfig, 'base' | 'name' | 'request'> & {
     client: Extract<Required<ClientConfig>['client'], object>;
@@ -223,4 +257,5 @@ export type Config = Omit<
       ExtractArrayOfObjects<ReadonlyArray<ClientPlugins>, { name: string }>,
       'name'
     >;
+    watch: Watch;
   };

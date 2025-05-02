@@ -28,6 +28,7 @@ import {
 import { registerHandlebarTemplates } from './utils/handlebars';
 import { Performance, PerformanceReport } from './utils/performance';
 import { postProcessClient } from './utils/postprocess';
+import { watchFile } from './utils/watch';
 
 type OutputProcessor = {
   args: (path: string) => ReadonlyArray<string>;
@@ -165,6 +166,32 @@ const getOutput = (userConfig: ClientConfig): Config['output'] => {
   return output;
 };
 
+const getWatch = (
+  userConfig: Pick<UserConfig, 'watch'> & Pick<Config, 'input'>,
+): Config['watch'] => {
+  let watch: Config['watch'] = {
+    enabled: false,
+    interval: 60000,
+    timeout: 0,
+  };
+  // we cannot watch spec passed as an object
+  if (typeof userConfig.input.path !== 'string') {
+    return watch;
+  }
+  if (typeof userConfig.watch === 'boolean') {
+    watch.enabled = userConfig.watch;
+  } else if (typeof userConfig.watch === 'number') {
+    watch.enabled = true;
+    watch.interval = userConfig.watch;
+  } else if (userConfig.watch) {
+    watch = {
+      ...watch,
+      ...userConfig.watch,
+    };
+  }
+  return watch;
+};
+
 const getPluginOrder = ({
   pluginConfigs,
   userPlugins,
@@ -290,7 +317,9 @@ const getSpec = async ({ config }: { config: Config }) => {
   return spec;
 };
 
-const initConfigs = async (userConfig: UserConfig): Promise<Config[]> => {
+export const initConfigs = async (
+  userConfig: UserConfig,
+): Promise<Config[]> => {
   let configurationFile: string | undefined = undefined;
   if (userConfig.configFile) {
     const parts = userConfig.configFile.split('.');
@@ -371,6 +400,7 @@ const initConfigs = async (userConfig: UserConfig): Promise<Config[]> => {
       output,
       request,
       useOptions,
+      watch: getWatch({ ...userConfig, input }),
     });
 
     if (debug) {
@@ -400,7 +430,9 @@ export async function createClient(
   const templates = registerHandlebarTemplates();
   Performance.end('handlebars');
 
-  const pCreateClient = (config: Config) => async () => {
+  const clients: Array<Client> = [];
+
+  const createClientFn = async (config: Config) => {
     Performance.start('spec');
     const spec = await getSpec({ config });
     Performance.end('spec');
@@ -445,13 +477,28 @@ export async function createClient(
     return context || client;
   };
 
-  const clients: Array<Client> = [];
+  // Process each config
+  for (const config of configs) {
+    // const client = await createClientFn(config);
+    // if (client && 'version' in client) {
+    //   clients.push(client);
+    // }
 
-  const pClients = configs.map((config) => pCreateClient(config));
-  for (const pClient of pClients) {
-    const client = await pClient();
-    if (client && 'version' in client) {
-      clients.push(client);
+    // Set up file watching if enabled
+    if (config.watch.enabled) {
+      watchFile({
+        callback: async () => {
+          try {
+            await createClientFn(config);
+          } catch (error) {
+            console.error('Error during regeneration:', error);
+          }
+        },
+        config,
+        onTimeout: () => {
+          console.log('Watch mode timed out');
+        },
+      });
     }
   }
 
@@ -484,6 +531,7 @@ export const defineConfig = (config: UserConfig): UserConfig => config;
 export default {
   createClient,
   defineConfig,
+  initConfigs,
 };
 
 export type { OpenApiV3_0_X } from './openApi/3.0.x';

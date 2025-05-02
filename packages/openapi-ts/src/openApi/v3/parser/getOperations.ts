@@ -37,7 +37,6 @@ export const getOperations = ({
 
       if (allowedServiceMethods.includes(method)) {
         const op = pathItem[method]!;
-        console.dir({ method, op, pathItem }, { depth: null });
 
         if (op.operationId) {
           if (operationIds.has(op.operationId)) {
