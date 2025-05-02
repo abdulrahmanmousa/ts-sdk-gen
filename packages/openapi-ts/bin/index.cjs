@@ -102,7 +102,7 @@ async function start() {
     }
   } catch (error) {
     if (!userConfig?.dryRun) {
-      const logName = `openapi-ts-error-${Date.now()}.log`;
+      const logName = `ts-sdk-errors/openapi-ts-error-${Date.now()}.log`;
       const logPath = resolve(process.cwd(), logName);
       writeFileSync(logPath, `${error.message}\n${error.stack}`);
       console.error(`🔥 Unexpected error occurred. Log saved to ${logPath}`);

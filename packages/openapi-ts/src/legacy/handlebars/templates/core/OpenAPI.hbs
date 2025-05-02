@@ -7,6 +7,9 @@ import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 {{#equals @root.$config.client.name 'legacy/node'}}
 import type { RequestInit, Response } from 'node-fetch';
 {{/equals}}
+{{#ifdef @root.$config.apiConfigFile}}
+import configFromFile from '{{{@root.$config.apiConfigFile}}}';
+{{/ifdef}}
 import type { ApiRequestOptions } from './ApiRequestOptions';
 
 type Headers = Record<string, string>;
@@ -81,4 +84,10 @@ export const OpenAPI: OpenAPIConfig = {
 		{{/notEquals}}
 		response: new Interceptors(),
 	},
+	{{#ifdef @root.$config.apiConfig}}
+	...JSON.parse('{{{JSON.stringify @root.$config.apiConfig}}}'),
+	{{/ifdef}}
+	{{#ifdef @root.$config.apiConfigFile}}
+	...configFromFile,
+	{{/ifdef}}
 };

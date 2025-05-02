@@ -1,4 +1,5 @@
 import type { ClientPlugins, UserPlugins } from '../plugins/';
+import type { Config as FetchConfig } from './../../../client-fetch/src/types';
 import type {
   ArrayOfObjectsToObjectMap,
   ExtractArrayOfObjects,
@@ -52,6 +53,18 @@ export type StringCase =
   | 'SCREAMING_SNAKE_CASE';
 
 export interface ClientConfig {
+  /**
+   * Predefined configuration object to use as default client config.
+   * This takes precedence over the default values but is overridden by explicitly provided options.
+   * Used to provide default values for the generated client's createConfig function.
+   */
+  apiConfig?: FetchConfig;
+  /**
+   * Path to a configuration file to load settings from.
+   * The file should export a configuration object that will be passed to the generated client's createConfig function.
+   * This is loaded and used as the apiConfig.
+   */
+  apiConfigFile?: string;
   /**
    * Manually set base in OpenAPI config instead of inferring from server value
    *
@@ -248,7 +261,12 @@ export type Config = Omit<
   | 'request'
   | 'watch'
 > &
-  Pick<ClientConfig, 'base' | 'name' | 'request'> & {
+  Pick<
+    ClientConfig,
+    'base' | 'apiConfig' | 'apiConfigFile' | 'name' | 'request'
+  > & {
+    apiConfig: FetchConfig;
+    apiConfigFile: string;
     client: Extract<Required<ClientConfig>['client'], object>;
     input: ExtractWithDiscriminator<ClientConfig['input'], { path: unknown }>;
     output: Extract<ClientConfig['output'], object>;

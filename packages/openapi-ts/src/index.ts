@@ -388,6 +388,8 @@ export const initConfigs = async (
 
     const config = setConfig({
       ...getPlugins(userConfig),
+      apiConfig: userConfig.apiConfig || {},
+      apiConfigFile: userConfig.apiConfigFile || '',
       base,
       client,
       configFile,

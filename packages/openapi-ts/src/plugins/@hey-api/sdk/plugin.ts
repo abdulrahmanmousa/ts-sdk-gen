@@ -423,6 +423,52 @@ export const handler: PluginHandler<Config> = ({ context, plugin }) => {
   });
 
   // define client first
+  const configParams = [];
+
+  if (
+    context.config.apiConfig &&
+    Object.keys(context.config.apiConfig).length > 0 &&
+    !context.config.apiConfigFile
+  ) {
+    configParams.push(
+      compiler.objectExpression({
+        obj: context.config.apiConfig,
+      }),
+    );
+  }
+
+  if (context.config.apiConfigFile) {
+    const path = require('path');
+
+    // Calculate the relative path from the SDK file to the config file
+    const sdkFullPath = path.resolve(
+      context.config.output.path,
+      plugin.output + '.ts',
+    );
+    const configFullPath = path.resolve(context.config.apiConfigFile);
+
+    // Get the directory of the SDK file
+    const sdkDir = path.dirname(sdkFullPath);
+
+    // Calculate the relative path from SDK to the config file
+    const relativePath = path
+      .relative(sdkDir, configFullPath)
+      .replace(/\.ts$/, '');
+
+    // Make sure the path has the proper format (starts with ./ or ../)
+    const formattedPath = relativePath.startsWith('.')
+      ? relativePath
+      : './' + relativePath;
+
+    file.import({
+      alias: 'ApiConfig',
+      module: formattedPath,
+      name: 'default',
+    });
+
+    configParams.push(compiler.identifier({ text: 'ApiConfig' }));
+  }
+
   const statement = compiler.constVariable({
     exportConst: true,
     expression: compiler.callExpression({
@@ -430,6 +476,7 @@ export const handler: PluginHandler<Config> = ({ context, plugin }) => {
       parameters: [
         compiler.callExpression({
           functionName: 'createConfig',
+          parameters: configParams,
         }),
       ],
     }),

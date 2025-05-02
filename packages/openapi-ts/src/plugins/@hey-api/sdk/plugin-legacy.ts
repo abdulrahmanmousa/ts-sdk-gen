@@ -856,6 +856,49 @@ export const handlerLegacy: PluginLegacyHandler<any> = ({ client, files }) => {
 
   // define client first
   if (!isLegacy) {
+    const configParams = [];
+
+    if (
+      config.apiConfig &&
+      Object.keys(config.apiConfig).length > 0 &&
+      !config.apiConfigFile
+    ) {
+      configParams.push(
+        compiler.objectExpression({
+          obj: config.apiConfig,
+        }),
+      );
+    }
+
+    if (config.apiConfigFile) {
+      const path = require('path');
+
+      // Calculate the relative path from the SDK file to the config file
+      const sdkFullPath = path.resolve(config.output.path, `${sdkOutput}.ts`);
+      const configFullPath = path.resolve(config.apiConfigFile);
+
+      // Get the directory of the SDK file
+      const sdkDir = path.dirname(sdkFullPath);
+
+      // Calculate the relative path from SDK to the config file
+      const relativePath = path
+        .relative(sdkDir, configFullPath)
+        .replace(/\.ts$/, '');
+
+      // Make sure the path has the proper format (starts with ./ or ../)
+      const formattedPath = relativePath.startsWith('.')
+        ? relativePath
+        : './' + relativePath;
+
+      files.sdk.import({
+        alias: 'ApiConfig',
+        module: formattedPath,
+        name: 'default',
+      });
+
+      configParams.push(compiler.identifier({ text: 'ApiConfig' }));
+    }
+
     const statement = compiler.constVariable({
       exportConst: true,
       expression: compiler.callExpression({
@@ -863,12 +906,15 @@ export const handlerLegacy: PluginLegacyHandler<any> = ({ client, files }) => {
         parameters: [
           compiler.callExpression({
             functionName: 'createConfig',
+            parameters: configParams,
           }),
         ],
       }),
       name: 'client',
     });
     files.sdk.add(statement);
+  } else {
+    console.log('legacy');
   }
 
   for (const service of client.services) {
