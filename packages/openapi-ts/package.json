@@ -1,6 +1,6 @@
 {
   "name": "@ts-sdk-gen/openapi-ts",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "🚀 The OpenAPI to TypeScript codegen. Generate clients, SDKs, validators, and more. Forked from @ts-sdk-gen/openapi-ts.",
   "homepage": "https://github.com/abdulrahmanmousa/ts-sdk-gen",
   "repository": {
