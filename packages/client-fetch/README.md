@@ -1,36 +1,118 @@
 <div align="center">
-  <img width="150" height="150" src="https://heyapi.dev/logo.png" alt="Logo">
-  <h1 align="center"><b>Fetch API Client</b></h1>
-  <p align="center">🚀 Fetch API client for `@ts-sdk-gen/openapi-ts` codegen.</p>
+  <h1 align="center"><b>@ts-sdk-gen/client-fetch</b></h1>
+  <p align="center">🚀 Fetch API client for @ts-sdk-gen/openapi-ts codegen.</p>
 </div>
-
-[Live demo](https://stackblitz.com/edit/hey-api-client-fetch-example?file=openapi-ts.config.ts,src%2Fclient%2Fschemas.gen.ts,src%2Fclient%2Fsdk.gen.ts,src%2Fclient%2Ftypes.gen.ts,src%2FApp.tsx)
 
 ## Features
 
-- seamless integration with `@ts-sdk-gen/openapi-ts` ecosystem
-- type-safe response data and errors
-- access to the original request and response
-- granular request and response customization options
-- minimal learning curve thanks to extending the underlying technology
-- support bundling inside the generated output
+- Seamless integration with @ts-sdk-gen/openapi-ts interactive initialization
+- Type-safe response data and error handling
+- Access to the original request and response objects
+- Request and response interceptors
+- Granular request and response customization options
+- Framework integration with React Query, SWR, and more
+- Support for bundling inside the generated output
 
-## Documentation
+## Quick Start
 
-Please visit our [website](https://heyapi.dev/) for documentation, guides, migrating, and more.
+The fastest way to get started is with our interactive init command:
 
-## Sponsoring
+```bash
+npx @ts-sdk-gen/openapi-ts init
+```
 
-Love Hey API? Please consider becoming a [sponsor](https://github.com/sponsors/hey-api).
+This will guide you through setting up your project, including installing this client.
 
-## GitHub Integration (coming soon)
+## Manual Installation
 
-Automatically update your code when the APIs it depends on change. [Find out more](https://heyapi.dev/openapi-ts/integrations.html).
+```bash
+# Install with your preferred package manager
+pnpm add @ts-sdk-gen/client-fetch
+```
 
-## Migrating from OpenAPI Typescript Codegen?
+## Configuration
 
-Please read our [migration guide](https://heyapi.dev/openapi-ts/migrating.html#openapi-typescript-codegen).
+Configure the client through the `api.config.ts` file:
+
+```typescript
+import type { Config } from '@ts-sdk-gen/client-fetch';
+
+export default {
+  baseUrl: 'http://localhost:8080',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  // Client-specific options
+} satisfies Config;
+```
+
+## Advanced Features
+
+### Request Interceptors
+
+You can add request interceptors to modify requests before they're sent:
+
+```typescript
+import { createClient } from '@ts-sdk-gen/client-fetch';
+
+const client = createClient({
+  baseUrl: 'https://api.example.com',
+});
+
+client.interceptors.request.use((request) => {
+  // Modify request
+  request.headers.set('Authorization', `Bearer ${getToken()}`);
+  return request;
+});
+```
+
+### Response Interceptors
+
+Add response interceptors to process responses:
+
+```typescript
+client.interceptors.response.use((response) => {
+  // Process response
+  if (response.status === 401) {
+    // Handle unauthorized
+  }
+  return response;
+});
+```
+
+### Error Interceptors
+
+Handle errors consistently:
+
+```typescript
+client.interceptors.error.use((error) => {
+  // Log or transform errors
+  console.error('API Error:', error);
+  return error;
+});
+```
+
+### URL Building
+
+Build URLs programmatically (requires experimental parser):
+
+```typescript
+const url = client.buildUrl({
+  path: {
+    id: 123,
+  },
+  query: {
+    filter: 'active',
+  },
+  url: '/users/{id}',
+});
+// Result: '/users/123?filter=active'
+```
+
+## Framework Integration
+
+This client works seamlessly with framework integrations like React Query when used with @ts-sdk-gen/openapi-ts.
 
 ## Contributing
 
-Want to get involved? Please refer to the [contributing guide](https://heyapi.dev/contributing.html).
+Contributions are welcome! Please feel free to submit a Pull Request.

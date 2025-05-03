@@ -1,6 +1,6 @@
 ---
 title: Get Started
-description: Get started with @hey-api/openapi-ts.
+description: Get started with @ts-sdk-gen/openapi-ts.
 ---
 
 <script setup>
@@ -9,64 +9,104 @@ import { embedProject } from '../embed'
 
 # Get Started
 
-::: warning
-This package is in initial development. The interface might change before it becomes stable. We encourage you to leave feedback on [GitHub](https://github.com/hey-api/openapi-ts/issues).
-:::
-
-[@hey-api/openapi-ts](https://github.com/hey-api/openapi-ts) is an OpenAPI to TypeScript codegen trusted more than 600k times each month to generate reliable API clients and SDKs.
-
-<button class="buttonLink" @click="(event) => embedProject('hey-api-example')(event)">
-Live demo
-</button>
+@ts-sdk-gen/openapi-ts is an OpenAPI to TypeScript codegen that generates reliable API clients and SDKs from your OpenAPI specifications.
 
 ## Features
 
-- works with CLI, Node.js 18+, or npx
-- supports OpenAPI 2.0, 3.0, and 3.1 specifications
-- supports both JSON and YAML input files
-- generates TypeScript interfaces, SDKs, and JSON Schemas
-- Fetch API, Axios, Angular, Node.js, and XHR clients available
-- plugin ecosystem to reduce third-party boilerplate
+- Interactive CLI setup with guided initialization
+- Support for OpenAPI 2.0, 3.0, and 3.1 specifications
+- TypeScript interfaces, SDKs, and JSON Schemas generation
+- Multiple HTTP client options (Fetch API, Axios)
+- Framework integrations (React Query, SWR)
+- Customizable code output with formatting and linting
+- Watch mode for automatic regeneration
 
 ## Quick Start
 
-The fastest way to use `@hey-api/openapi-ts` is via npx
+The fastest way to get started is with our interactive init command:
 
 ```sh
-npx @hey-api/openapi-ts -i path/to/openapi.json -o src/client -c @ts-sdk-gen/client-fetch
+npx @ts-sdk-gen/openapi-ts init
 ```
 
-Congratulations on creating your first client! 🎉 You can learn more about the generated files on the [Output](/openapi-ts/output) page.
+This interactive setup will:
 
-Before you can make API requests with the client you've just created, you need to install `@ts-sdk-gen/client-fetch` and configure it. Let's start by declaring your dependencies.
+1. Prompt you to select your package manager (npm, pnpm, yarn, bun)
+2. Ask which TypeScript framework integration you'd like to use
+3. Let you specify your OpenAPI schema path
+4. Configure the output directory for generated code
+5. Set up your API base URL
 
-## Installation
+After completion, you'll have a fully configured project with all necessary files and dependencies installed.
+
+### Manual Setup
+
+If you prefer to set up manually, you can install the packages and create the configuration files yourself:
 
 ::: code-group
 
 ```sh [npm]
-npm install @ts-sdk-gen/client-fetch && npm install @hey-api/openapi-ts -D
+npm install @ts-sdk-gen/client-fetch && npm install @ts-sdk-gen/openapi-ts -D
 ```
 
 ```sh [pnpm]
-pnpm add @ts-sdk-gen/client-fetch && pnpm add @hey-api/openapi-ts -D
+pnpm add @ts-sdk-gen/client-fetch && pnpm add @ts-sdk-gen/openapi-ts -D
 ```
 
 ```sh [yarn]
-yarn add @ts-sdk-gen/client-fetch && yarn add @hey-api/openapi-ts -D
+yarn add @ts-sdk-gen/client-fetch && yarn add @ts-sdk-gen/openapi-ts -D
 ```
 
 ```sh [bun]
-bun add @ts-sdk-gen/client-fetch && bun add @hey-api/openapi-ts -D
+bun add @ts-sdk-gen/client-fetch && bun add @ts-sdk-gen/openapi-ts -D
 ```
 
 :::
 
-We recommend pinning an exact version so you can safely upgrade when you're ready. This package is in [initial development](https://semver.org/spec/v0.1.0.html#spec-item-5) and its API might change before v1.
+## Configuration
 
-### CLI
+Create an `openapi-ts.config.ts` file in your project root:
 
-Most people run `@hey-api/openapi-ts` via CLI. To do that, add a script to your `package.json` file which will make `openapi-ts` executable through script.
+```typescript
+import { defineConfig } from '@ts-sdk-gen/openapi-ts';
+
+const config = defineConfig({
+  apiConfigFile: './api.config.ts',
+  client: {
+    name: '@ts-sdk-gen/client-fetch',
+  },
+  input: {
+    path: './openapi-schema.json',
+  },
+  output: {
+    format: 'prettier',
+    lint: 'eslint',
+    path: './src/sdk',
+  },
+  plugins: ['@tanstack/react-query'],
+  watch: {
+    enabled: true,
+    interval: 1000,
+    timeout: 0,
+  },
+});
+
+export default config;
+```
+
+Then create an `api.config.ts` file:
+
+```typescript
+import type { Config } from '@ts-sdk-gen/client-fetch';
+
+export default {
+  baseUrl: 'http://localhost:8080',
+} satisfies Config;
+```
+
+## CLI
+
+Add a script to your `package.json` file to make running the generator easier:
 
 ```json
 "scripts": {
@@ -74,29 +114,27 @@ Most people run `@hey-api/openapi-ts` via CLI. To do that, add a script to your 
 }
 ```
 
-The above script can be executed by running `npm run openapi-ts` or equivalent command in other package managers. Next, we need to create a [configuration](/openapi-ts/configuration) file and move our options from Quick Start to it.
+Then you can generate your SDK by running:
 
-### Node.js
+```sh
+pnpm openapi-ts
+```
 
-You can also generate clients programmatically by importing `@hey-api/openapi-ts` in a TypeScript file.
+## Node.js API
 
-::: code-group
+You can also generate clients programmatically:
 
-```ts [openapi-ts.ts]
-import { createClient } from '@hey-api/openapi-ts';
+```typescript
+import { createClient } from '@ts-sdk-gen/openapi-ts';
 
 createClient({
   client: '@ts-sdk-gen/client-fetch',
-  input: 'path/to/openapi.json',
-  output: 'src/client',
+  input: './openapi-schema.json',
+  output: './src/sdk',
 });
 ```
 
-:::
-
-### Configuration
-
-It is a good practice to extract your configuration into a separate file. Learn how to do that and discover available options on the [Configuration](/openapi-ts/configuration) page.
+For more detailed configuration options, see the [Configuration](/openapi-ts/configuration) page.
 
 <!--@include: ../examples.md-->
 <!--@include: ../sponsorship.md-->

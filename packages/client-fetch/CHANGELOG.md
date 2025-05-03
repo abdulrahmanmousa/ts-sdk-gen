@@ -1,5 +1,13 @@
 # @ts-sdk-gen/client-fetch
 
+## 0.6.0
+
+### Minor Changes
+
+- Add support for the interactive init command
+- Better integration with framework plugins
+- Improved error handling
+
 ## 0.5.0
 
 ### Minor Changes
