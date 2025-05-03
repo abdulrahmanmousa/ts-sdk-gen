@@ -8,13 +8,33 @@ const { resolve } = require('path');
 const { program } = require('commander');
 const pkg = require('../package.json');
 
-const params = program
-  .name(Object.keys(pkg.bin)[0])
-  .usage('[options]')
-  .version(pkg.version)
+// Create a basic command structure
+program.name(Object.keys(pkg.bin)[0]).version(pkg.version);
+
+// Add the init command
+program
+  .command('init')
+  .description('Initialize @ts-sdk-gen/openapi-ts in your project')
+  .option('-f, --force', 'Overwrite existing configuration files')
+  .action(async (options) => {
+    try {
+      const { initCommand } = require(resolve(__dirname, '../dist/index.cjs'));
+      await initCommand(options);
+    } catch (error) {
+      console.error(
+        `🔥 Unexpected error occurred during init: ${error.message}`,
+      );
+      process.exit(1);
+    }
+  });
+
+// Add the default command for backward compatibility
+program
+  .command('generate', { hidden: true, isDefault: true })
+  .description('Generate SDK from OpenAPI specification')
   .option(
     '-c, --client <value>',
-    'HTTP client to generate [@hey-api/client-axios, @hey-api/client-fetch, legacy/angular, legacy/axios, legacy/fetch, legacy/node, legacy/xhr]',
+    'HTTP client to generate [@ts-sdk-gen/client-axios, @ts-sdk-gen/client-fetch, legacy/angular, legacy/axios, legacy/fetch, legacy/node, legacy/xhr]',
   )
   .option('-d, --debug', 'Run in debug mode?')
   .option('--dry-run [value]', 'Skip writing files to disk?')
@@ -40,8 +60,17 @@ const params = program
     '--useOptions [value]',
     'DEPRECATED. Use options instead of arguments?',
   )
-  .parse(process.argv)
-  .opts();
+  .action(async (options) => {
+    await runGenerate(options);
+  });
+
+// For backward compatibility, support options directly on the program
+const mainOptions = program.opts();
+if (Object.keys(mainOptions).length > 0) {
+  runGenerate(mainOptions);
+} else {
+  program.parse(process.argv);
+}
 
 const stringToBoolean = (value) => {
   if (value === 'true') {
@@ -68,7 +97,7 @@ const processParams = (obj, booleanKeys) => {
   return obj;
 };
 
-async function start() {
+async function runGenerate(params) {
   let userConfig;
   try {
     const { createClient, initConfigs } = require(
@@ -111,5 +140,3 @@ async function start() {
     process.exit(1);
   }
 }
-
-start();

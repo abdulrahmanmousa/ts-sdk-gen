@@ -5,6 +5,7 @@ import $RefParser from '@apidevtools/json-schema-ref-parser';
 import { loadConfig } from 'c12';
 import { sync } from 'cross-spawn';
 
+import { initCommand } from './commands/init';
 import { generateLegacyOutput, generateOutput } from './generate/output';
 import type { IRContext } from './ir/context';
 import { parseExperimental, parseLegacy } from './openApi';
@@ -533,9 +534,10 @@ export const defineConfig = (config: UserConfig): UserConfig => config;
 export default {
   createClient,
   defineConfig,
+  initCommand,
   initConfigs,
 };
-
+export * from './commands/init';
 export type { OpenApiV3_0_X } from './openApi/3.0.x';
 export type { OpenApiV3_1_X } from './openApi/3.1.x';
 export type { UserConfig } from './types/config';
