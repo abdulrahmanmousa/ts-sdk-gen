@@ -2,11 +2,84 @@
 
 'use strict';
 
-const { writeFileSync } = require('fs');
+const { existsSync, mkdirSync, writeFileSync } = require('node:fs');
 const { resolve } = require('path');
 
 const { program } = require('commander');
 const pkg = require('../package.json');
+
+const stringToBoolean = (value) => {
+  if (value === 'true') {
+    return true;
+  }
+  if (value === 'false') {
+    return false;
+  }
+  return value;
+};
+
+const processParams = (obj, booleanKeys) => {
+  for (const key of booleanKeys) {
+    const value = obj[key];
+    if (typeof value === 'string') {
+      const parsedValue = stringToBoolean(value);
+      delete obj[key];
+      obj[key] = parsedValue;
+    }
+  }
+  if (obj.file) {
+    obj.configFile = obj.file;
+  }
+  return obj;
+};
+
+async function runGenerate(params) {
+  let userConfig;
+  try {
+    const { createClient, initConfigs } = require(
+      resolve(__dirname, '../dist/index.cjs'),
+    );
+    userConfig = processParams(params, [
+      'dryRun',
+      'experimentalParser',
+      'exportCore',
+      'useOptions',
+    ]);
+    if (params.plugins === true) {
+      userConfig.plugins = [];
+    } else if (params.plugins) {
+      userConfig.plugins = params.plugins;
+    }
+
+    const configs = await initConfigs(userConfig);
+    await createClient(userConfig);
+    let watchEnabled = false;
+    for (const config of configs) {
+      if (config.watch.enabled) {
+        watchEnabled = true;
+      }
+    }
+
+    if (!watchEnabled) {
+      process.exit(0);
+    }
+  } catch (error) {
+    if (!userConfig?.dryRun) {
+      const logDir = resolve(process.cwd(), 'ts-sdk-errors');
+      const logName = `openapi-ts-error-${Date.now()}.log`;
+      const logPath = resolve(logDir, logName);
+
+      if (!existsSync(logDir)) {
+        mkdirSync(logDir, { recursive: true });
+      }
+
+      writeFileSync(logPath, `${error.message}\n${error.stack}`);
+      console.error(`🔥 Unexpected error occurred. Log saved to ${logPath}`);
+    }
+    console.error(`🔥 Unexpected error occurred. ${error.message}`);
+    process.exit(1);
+  }
+}
 
 // Create a basic command structure
 program.name(Object.keys(pkg.bin)[0]).version(pkg.version);
@@ -70,73 +143,4 @@ if (Object.keys(mainOptions).length > 0) {
   runGenerate(mainOptions);
 } else {
   program.parse(process.argv);
-}
-
-const stringToBoolean = (value) => {
-  if (value === 'true') {
-    return true;
-  }
-  if (value === 'false') {
-    return false;
-  }
-  return value;
-};
-
-const processParams = (obj, booleanKeys) => {
-  for (const key of booleanKeys) {
-    const value = obj[key];
-    if (typeof value === 'string') {
-      const parsedValue = stringToBoolean(value);
-      delete obj[key];
-      obj[key] = parsedValue;
-    }
-  }
-  if (obj.file) {
-    obj.configFile = obj.file;
-  }
-  return obj;
-};
-
-async function runGenerate(params) {
-  let userConfig;
-  try {
-    const { createClient, initConfigs } = require(
-      resolve(__dirname, '../dist/index.cjs'),
-    );
-    userConfig = processParams(params, [
-      'dryRun',
-      'experimentalParser',
-      'exportCore',
-      'useOptions',
-    ]);
-    if (params.plugins === true) {
-      userConfig.plugins = [];
-    } else if (params.plugins) {
-      userConfig.plugins = params.plugins;
-    }
-
-    const configs = await initConfigs(userConfig);
-    await createClient(userConfig);
-    let watchEnabled = false;
-    // Process each config
-    for (const config of configs) {
-      // Set up file watching if enabled
-      if (config.watch.enabled) {
-        watchEnabled = true;
-      }
-    }
-
-    if (!watchEnabled) {
-      process.exit(0);
-    }
-  } catch (error) {
-    if (!userConfig?.dryRun) {
-      const logName = `ts-sdk-errors/openapi-ts-error-${Date.now()}.log`;
-      const logPath = resolve(process.cwd(), logName);
-      writeFileSync(logPath, `${error.message}\n${error.stack}`);
-      console.error(`🔥 Unexpected error occurred. Log saved to ${logPath}`);
-    }
-    console.error(`🔥 Unexpected error occurred. ${error.message}`);
-    process.exit(1);
-  }
 }
