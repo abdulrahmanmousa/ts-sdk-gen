@@ -10,7 +10,7 @@ import { embedProject } from '../../embed'
 # Axios
 
 ::: warning
-Axios client is currently in beta. The interface might change before it becomes stable. We encourage you to leave feedback on [GitHub](https://github.com/hey-api/openapi-ts/issues).
+Axios client is currently in beta. The interface might change before it becomes stable. We encourage you to leave feedback on [GitHub](https://github.com/ts-sdk-gen/openapi-ts/issues).
 :::
 
 [Axios](https://axios-http.com/) is a simple promise based HTTP client for the browser and Node.js. Axios provides a simple to use library in a small package with a very extensible interface.
@@ -43,7 +43,7 @@ bun add @hey-api/client-axios
 
 :::
 
-Ensure you have already [configured](/openapi-ts/get-started) `@hey-api/openapi-ts`. Update your configuration to use the Axios client package.
+Ensure you have already [configured](/openapi-ts/get-started) `@ts-sdk-gen/openapi-ts`. Update your configuration to use the Axios client package.
 
 ```js
 export default {

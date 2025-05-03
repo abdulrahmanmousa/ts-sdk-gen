@@ -1,5 +1,5 @@
 ---
-'@hey-api/openapi-ts': minor
+'@ts-sdk-gen/openapi-ts': minor
 ---
 
 feat: add typescript.identifierCase option
@@ -10,7 +10,7 @@ feat: add typescript.identifierCase option
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   experimentalParser: true,
   input: 'path/to/openapi.json',
   output: 'src/client',

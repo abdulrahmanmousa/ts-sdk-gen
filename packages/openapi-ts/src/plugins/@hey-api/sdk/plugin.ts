@@ -206,7 +206,7 @@ const operationStatements = ({
       (parameter.style !== 'form' || !parameter.explode)
     ) {
       // override the default settings for `querySerializer`
-      if (context.config.client.name === '@hey-api/client-fetch') {
+      if (context.config.client.name === '@ts-sdk-gen/client-fetch') {
         requestOptions.push({
           key: 'querySerializer',
           value: [

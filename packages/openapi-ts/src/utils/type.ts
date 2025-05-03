@@ -38,7 +38,7 @@ const typeReference = (model: Model) => {
    * special handling for single reference. The current approach didn't handle
    * transformed names, this fixes that. We should add a more robust solution,
    * but this will work for now.
-   * {@link https://github.com/hey-api/openapi-ts/issues/768}
+   * {@link https://github.com/ts-sdk-gen/openapi-ts/issues/768}
    */
   if (model.export === 'reference' && model.$refs.length === 1) {
     if (model.$refs[0].startsWith(refSchemasPartial)) {

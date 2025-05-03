@@ -1,14 +1,14 @@
 <div align="center">
   <img width="150" height="150" src="https://heyapi.dev/logo.png" alt="Logo">
   <h1 align="center"><b>Fetch API Client</b></h1>
-  <p align="center">🚀 Fetch API client for `@hey-api/openapi-ts` codegen.</p>
+  <p align="center">🚀 Fetch API client for `@ts-sdk-gen/openapi-ts` codegen.</p>
 </div>
 
 [Live demo](https://stackblitz.com/edit/hey-api-client-fetch-example?file=openapi-ts.config.ts,src%2Fclient%2Fschemas.gen.ts,src%2Fclient%2Fsdk.gen.ts,src%2Fclient%2Ftypes.gen.ts,src%2FApp.tsx)
 
 ## Features
 
-- seamless integration with `@hey-api/openapi-ts` ecosystem
+- seamless integration with `@ts-sdk-gen/openapi-ts` ecosystem
 - type-safe response data and errors
 - access to the original request and response
 - granular request and response customization options

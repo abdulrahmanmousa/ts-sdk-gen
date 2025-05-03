@@ -1,11 +1,11 @@
 ---
 title: Output
-description: Learn about files generated with @hey-api/openapi-ts.
+description: Learn about files generated with @ts-sdk-gen/openapi-ts.
 ---
 
 # Output
 
-Learn about files generated with `@hey-api/openapi-ts`.
+Learn about files generated with `@ts-sdk-gen/openapi-ts`.
 
 ::: tip
 Your actual output depends on your Hey API configuration. It may contain a different number of files and their contents might differ.
@@ -69,7 +69,7 @@ You can modify the contents of `types.gen.ts` by configuring the `@hey-api/types
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [
@@ -85,13 +85,13 @@ export default {
 
 ## Enums
 
-By default, `@hey-api/openapi-ts` will only emit enums as types. You may want to generate runtime artifacts. A good use case is iterating through possible field values without manually typing arrays. To emit runtime enums, set `enums` to a valid option.
+By default, `@ts-sdk-gen/openapi-ts` will only emit enums as types. You may want to generate runtime artifacts. A good use case is iterating through possible field values without manually typing arrays. To emit runtime enums, set `enums` to a valid option.
 
 ::: code-group
 
 ```js [disabled]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [
@@ -106,7 +106,7 @@ export default {
 
 ```js [javascript]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [
@@ -121,7 +121,7 @@ export default {
 
 ```js [typescript]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [
@@ -140,7 +140,7 @@ We recommend exporting enums as plain JavaScript objects. [TypeScript enums](htt
 
 ## SDKs
 
-SDKs are located in the `sdk.gen.ts` file. SDKs are abstractions on top of clients and serve the same purpose. By default, `@hey-api/openapi-ts` will generate a flat SDK layer. Your choice to use SDKs depends on personal preferences and bundle size considerations.
+SDKs are located in the `sdk.gen.ts` file. SDKs are abstractions on top of clients and serve the same purpose. By default, `@ts-sdk-gen/openapi-ts` will generate a flat SDK layer. Your choice to use SDKs depends on personal preferences and bundle size considerations.
 
 ### Flat SDKs
 
@@ -152,7 +152,7 @@ Class SDKs do not support tree-shaking which will lead to increased bundle sizes
 
 ### No SDKs
 
-If you prefer to use clients directly or do not need the SDK layer, define `plugins` manually and omit the `@hey-api/sdk` plugin. Type support for clients is currently limited due to popularity of other options. If you'd like to use this option and need better types, [open an issue](https://github.com/hey-api/openapi-ts/issues).
+If you prefer to use clients directly or do not need the SDK layer, define `plugins` manually and omit the `@hey-api/sdk` plugin. Type support for clients is currently limited due to popularity of other options. If you'd like to use this option and need better types, [open an issue](https://github.com/ts-sdk-gen/openapi-ts/issues).
 
 ### Configuration
 
@@ -162,7 +162,7 @@ You can modify the contents of `sdk.gen.ts` by configuring the `@hey-api/sdk` pl
 
 ```js [flat]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [
@@ -178,7 +178,7 @@ export default {
 
 ```js [class]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [
@@ -194,7 +194,7 @@ export default {
 
 ```js [none]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [
@@ -214,7 +214,7 @@ Below are different outputs depending on your chosen style. No SDKs approach wil
 ::: code-group
 
 ```ts [flat]
-import { client, type Options } from '@hey-api/client-fetch';
+import { client, type Options } from '@ts-sdk-gen/client-fetch';
 
 import type { AddPetData, AddPetError, AddPetResponse } from './types.gen';
 
@@ -226,7 +226,7 @@ export const addPet = (options: Options<AddPetData>) =>
 ```
 
 ```ts [class]
-import { client, type Options } from '@hey-api/client-fetch';
+import { client, type Options } from '@ts-sdk-gen/client-fetch';
 
 import type { AddPetData, AddPetError, AddPetResponse } from './types.gen';
 
@@ -269,7 +269,7 @@ PetService.addPet({
 ```
 
 ```ts [none]
-import { client } from '@hey-api/client-fetch';
+import { client } from '@ts-sdk-gen/client-fetch';
 
 client.post({
   body: {
@@ -293,7 +293,7 @@ You can modify the contents of `schemas.gen.ts` by configuring the `@hey-api/sch
 
 ```js [json]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [
@@ -309,7 +309,7 @@ export default {
 
 ```js [form]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [
@@ -325,7 +325,7 @@ export default {
 
 ```js [disabled]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [

@@ -1,4 +1,4 @@
-import { defineConfig } from '@hey-api/openapi-ts';
+import { defineConfig } from '@ts-sdk-gen/openapi-ts';
 
 export default defineConfig({
   client: '@hey-api/client-axios',

@@ -5,7 +5,7 @@ import {
   getPetByIdOptions,
   updatePetMutation
 } from '@/client/@tanstack/vue-query.gen'
-import { createClient } from '@hey-api/client-fetch'
+import { createClient } from '@ts-sdk-gen/client-fetch'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { computed, ref, watch } from 'vue'
 
@@ -161,7 +161,7 @@ watch(error, (error) => {
           />
         </a>
 
-        <h1 class="text-2xl font-bold text-white">@hey-api/openapi-ts 🤝 TanStack Vue Query</h1>
+        <h1 class="text-2xl font-bold text-white">@ts-sdk-gen/openapi-ts 🤝 TanStack Vue Query</h1>
       </div>
 
       <div class="flex flex-col gap-2">

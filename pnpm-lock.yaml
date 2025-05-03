@@ -122,7 +122,7 @@ importers:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
-      '@hey-api/openapi-ts':
+      '@ts-sdk-gen/openapi-ts':
         specifier: workspace:*
         version: link:../../packages/openapi-ts
       '@types/react':
@@ -170,7 +170,7 @@ importers:
 
   examples/openapi-ts-fastify:
     dependencies:
-      '@hey-api/client-fetch':
+      '@ts-sdk-gen/client-fetch':
         specifier: workspace:*
         version: link:../../packages/client-fetch
       fastify:
@@ -180,7 +180,7 @@ importers:
         specifier: 4.7.3
         version: 4.7.3
     devDependencies:
-      '@hey-api/openapi-ts':
+      '@ts-sdk-gen/openapi-ts':
         specifier: workspace:*
         version: link:../../packages/openapi-ts
       eslint:
@@ -198,7 +198,7 @@ importers:
 
   examples/openapi-ts-fetch:
     dependencies:
-      '@hey-api/client-fetch':
+      '@ts-sdk-gen/client-fetch':
         specifier: workspace:*
         version: link:../../packages/client-fetch
       '@radix-ui/react-form':
@@ -217,7 +217,7 @@ importers:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
-      '@hey-api/openapi-ts':
+      '@ts-sdk-gen/openapi-ts':
         specifier: workspace:*
         version: link:../../packages/openapi-ts
       '@types/react':
@@ -295,7 +295,7 @@ importers:
       '@angular/router':
         specifier: ^19.0.0
         version: 19.0.0(@angular/common@19.0.0(@angular/core@19.0.0(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.0(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.0.0(@angular/animations@19.0.0(@angular/core@19.0.0(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.0.0(@angular/core@19.0.0(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.0(rxjs@7.8.1)(zone.js@0.15.0)))(rxjs@7.8.1)
-      '@hey-api/client-fetch':
+      '@ts-sdk-gen/client-fetch':
         specifier: workspace:*
         version: link:../../packages/client-fetch
       '@tanstack/angular-query-experimental':
@@ -320,7 +320,7 @@ importers:
       '@angular/compiler-cli':
         specifier: ^19.0.0
         version: 19.0.0(@angular/compiler@19.0.0(@angular/core@19.0.0(rxjs@7.8.1)(zone.js@0.15.0)))(typescript@5.5.3)
-      '@hey-api/openapi-ts':
+      '@ts-sdk-gen/openapi-ts':
         specifier: workspace:*
         version: link:../../packages/openapi-ts
       '@types/jasmine':
@@ -350,7 +350,7 @@ importers:
 
   examples/openapi-ts-tanstack-react-query:
     dependencies:
-      '@hey-api/client-fetch':
+      '@ts-sdk-gen/client-fetch':
         specifier: workspace:*
         version: link:../../packages/client-fetch
       '@radix-ui/react-form':
@@ -375,7 +375,7 @@ importers:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
-      '@hey-api/openapi-ts':
+      '@ts-sdk-gen/openapi-ts':
         specifier: workspace:*
         version: link:../../packages/openapi-ts
       '@types/react':
@@ -423,7 +423,7 @@ importers:
 
   examples/openapi-ts-tanstack-svelte-query:
     dependencies:
-      '@hey-api/client-fetch':
+      '@ts-sdk-gen/client-fetch':
         specifier: workspace:*
         version: link:../../packages/client-fetch
       '@tanstack/svelte-query':
@@ -433,7 +433,7 @@ importers:
       '@fontsource/fira-mono':
         specifier: 5.0.0
         version: 5.0.0
-      '@hey-api/openapi-ts':
+      '@ts-sdk-gen/openapi-ts':
         specifier: workspace:*
         version: link:../../packages/openapi-ts
       '@neoconfetti/svelte':
@@ -490,7 +490,7 @@ importers:
 
   examples/openapi-ts-tanstack-vue-query:
     dependencies:
-      '@hey-api/client-fetch':
+      '@ts-sdk-gen/client-fetch':
         specifier: workspace:*
         version: link:../../packages/client-fetch
       '@tanstack/vue-query':
@@ -509,7 +509,7 @@ importers:
         specifier: 4.4.5
         version: 4.4.5(vue@3.5.13(typescript@5.5.3))
     devDependencies:
-      '@hey-api/openapi-ts':
+      '@ts-sdk-gen/openapi-ts':
         specifier: workspace:*
         version: link:../../packages/openapi-ts
       '@rushstack/eslint-patch':

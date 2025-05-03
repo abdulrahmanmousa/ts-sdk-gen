@@ -184,7 +184,7 @@ describe('OpenAPI v3', () => {
     },
     {
       config: createConfig({
-        client: '@hey-api/client-fetch',
+        client: '@ts-sdk-gen/client-fetch',
       }),
       description: 'generate Fetch API client',
       name: 'v3-hey-api-client-fetch',
@@ -193,7 +193,7 @@ describe('OpenAPI v3', () => {
       config: createConfig({
         client: {
           bundle: true,
-          name: '@hey-api/client-fetch',
+          name: '@ts-sdk-gen/client-fetch',
         },
       }),
       description: 'generate bundled Fetch API client',
@@ -201,7 +201,7 @@ describe('OpenAPI v3', () => {
     },
     {
       config: createConfig({
-        client: '@hey-api/client-fetch',
+        client: '@ts-sdk-gen/client-fetch',
         plugins: [
           {
             enums: 'javascript',

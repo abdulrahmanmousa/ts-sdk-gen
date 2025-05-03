@@ -16,12 +16,12 @@
     "test": "vitest --watch=false"
   },
   "dependencies": {
-    "@hey-api/client-fetch": "workspace:*",
+    "@ts-sdk-gen/client-fetch": "workspace:*",
     "@tanstack/svelte-query": "5.61.3"
   },
   "devDependencies": {
     "@fontsource/fira-mono": "5.0.0",
-    "@hey-api/openapi-ts": "workspace:*",
+    "@ts-sdk-gengen/openapi-ts": "workspace:*",
     "@neoconfetti/svelte": "2.0.0",
     "@sveltejs/adapter-auto": "3.0.0",
     "@sveltejs/kit": "2.8.3",

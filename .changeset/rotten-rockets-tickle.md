@@ -1,5 +1,5 @@
 ---
-'@hey-api/openapi-ts': minor
+'@ts-sdk-gen/openapi-ts': minor
 ---
 
 fix: remove schemas and transformers re-exports from index.ts

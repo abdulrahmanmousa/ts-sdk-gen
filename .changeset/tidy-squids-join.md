@@ -1,5 +1,5 @@
 ---
-'@hey-api/openapi-ts': minor
+'@ts-sdk-gen/openapi-ts': minor
 ---
 
 feat: add output.clean option
@@ -10,7 +10,7 @@ By default, the `output.path` folder will be emptied on every run. To preserve t
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: {
     clean: false, // [!code ++]

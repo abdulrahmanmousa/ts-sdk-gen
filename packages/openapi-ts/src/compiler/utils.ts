@@ -84,7 +84,7 @@ export const createIdentifier = ({ text }: { text: string }) => {
 };
 
 /**
- * ots for @hey-api/openapi-ts are helpers to reduce repetition of basic TypeScript
+ * ots for @ts-sdk-gen/openapi-ts are helpers to reduce repetition of basic TypeScript
  * factory functions.
  */
 export const ots = {

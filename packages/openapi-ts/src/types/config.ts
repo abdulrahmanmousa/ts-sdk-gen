@@ -9,7 +9,7 @@ import type {
 export const CLIENTS = [
   '@hey-api/client-axios',
   '@ts-sdk-gen/client-axios',
-  '@hey-api/client-fetch',
+  '@ts-sdk-gen/client-fetch',
   '@ts-sdk-gen/client-fetch',
   'legacy/angular',
   'legacy/axios',

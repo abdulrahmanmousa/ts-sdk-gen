@@ -6,7 +6,7 @@ const main = async () => {
     client: {
       // bundle: true,
       name: '@hey-api/client-axios',
-      // name: '@hey-api/client-fetch',
+      // name: '@ts-sdk-gen/client-fetch',
     },
     // debug: true,
     experimentalParser: true,

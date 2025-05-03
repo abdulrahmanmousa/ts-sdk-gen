@@ -21,24 +21,24 @@ Live demo
 
 ## Installation
 
-Start by adding `@hey-api/client-fetch` to your dependencies.
+Start by adding `@ts-sdk-gen/client-fetch` to your dependencies.
 
 ::: code-group
 
 ```sh [npm]
-npm install @hey-api/client-fetch
+npm install @ts-sdk-gen/client-fetch
 ```
 
 ```sh [pnpm]
-pnpm add @hey-api/client-fetch
+pnpm add @ts-sdk-gen/client-fetch
 ```
 
 ```sh [yarn]
-yarn add @hey-api/client-fetch
+yarn add @ts-sdk-gen/client-fetch
 ```
 
 ```sh [bun]
-bun add @hey-api/client-fetch
+bun add @ts-sdk-gen/client-fetch
 ```
 
 :::
@@ -47,7 +47,7 @@ Ensure you have already [configured](/openapi-ts/get-started) `@hey-api/openapi-
 
 ```js
 export default {
-  client: '@hey-api/client-fetch', // [!code ++]
+  client: '@ts-sdk-gen/client-fetch', // [!code ++]
   input: 'path/to/openapi.json',
   output: 'src/client',
 };
@@ -70,7 +70,7 @@ client.setConfig({
 If you aren't using SDKs, you can create your own client instance.
 
 ```js
-import { createClient } from '@hey-api/client-fetch';
+import { createClient } from '@ts-sdk-gen/client-fetch';
 
 const client = createClient({
   baseUrl: 'https://example.com',
@@ -154,7 +154,7 @@ You can pass any Fetch API configuration option to `setConfig()`, and even your 
 If you need to create a client pointing to a different domain, you can create your own client instance.
 
 ```js
-import { createClient } from '@hey-api/client-fetch';
+import { createClient } from '@ts-sdk-gen/client-fetch';
 
 const myClient = createClient({
   baseUrl: 'https://example.com',
@@ -218,7 +218,7 @@ Sometimes, you may not want to declare client packages as a dependency. This sce
 export default {
   client: {
     bundle: true, // [!code ++]
-    name: '@hey-api/client-fetch',
+    name: '@ts-sdk-gen/client-fetch',
   },
   input: 'path/to/openapi.json',
   output: 'src/client',

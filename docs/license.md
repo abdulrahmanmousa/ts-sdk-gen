@@ -5,7 +5,7 @@ description: License FAQ.
 
 # License
 
-While our client packages use the standard MIT license, [openapi-ts](https://github.com/hey-api/openapi-ts/blob/main/LICENSE.md) uses the FSL license pioneered by Sentry. This page explains the motivation behind the change and attempts to answer the most commonly asked questions. If your question isn't answered here, please join the [discussion](https://github.com/orgs/hey-api/discussions/1141).
+While our client packages use the standard MIT license, [openapi-ts](https://github.com/ts-sdk-gen/openapi-ts/blob/main/LICENSE.md) uses the FSL license pioneered by Sentry. This page explains the motivation behind the change and attempts to answer the most commonly asked questions. If your question isn't answered here, please join the [discussion](https://github.com/orgs/hey-api/discussions/1141).
 
 ## FAQ
 

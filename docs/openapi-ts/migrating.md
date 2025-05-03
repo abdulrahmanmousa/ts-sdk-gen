@@ -1,11 +1,11 @@
 ---
 title: Migrating
-description: Migrating to @hey-api/openapi-ts.
+description: Migrating to @ts-sdk-gen/openapi-ts.
 ---
 
 # Migrating
 
-While we try to avoid breaking changes, sometimes it's unavoidable in order to offer you the latest features. This page lists changes that require updates to your code. If you run into a problem with migration, please [open an issue](https://github.com/hey-api/openapi-ts/issues).
+While we try to avoid breaking changes, sometimes it's unavoidable in order to offer you the latest features. This page lists changes that require updates to your code. If you run into a problem with migration, please [open an issue](https://github.com/ts-sdk-gen/openapi-ts/issues).
 
 ## @next
 
@@ -53,7 +53,7 @@ By default, the `output.path` folder will be emptied on every run. To preserve t
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: {
     clean: false, // [!code ++]
@@ -68,7 +68,7 @@ export default {
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   experimentalParser: true,
   input: 'path/to/openapi.json',
   output: 'src/client',
@@ -109,7 +109,7 @@ This is a breaking change since in the previous versions, inline enums were alwa
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   experimentalParser: true,
   input: 'path/to/openapi.json',
   output: 'src/client',
@@ -149,7 +149,7 @@ This config option can be used to replace the deprecated options. It accepts a r
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   experimentalParser: true,
   input: {
     include: '^(#/components/schemas/foo|#/paths/api/v1/foo/get)$', // [!code ++]
@@ -177,7 +177,7 @@ Previously, you could explicitly disable export of certain artifacts using the `
 
 ```js [shorthand]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   schemas: false, // [!code --]
@@ -187,7 +187,7 @@ export default {
 
 ```js [*.export]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   schemas: {
@@ -205,7 +205,7 @@ Each plugin definition contains a `name` field. This was conflicting with the `s
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   schemas: {
@@ -227,7 +227,7 @@ Previously, you could use a string value as a shorthand for the `services.includ
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   services: '^MySchema', // [!code --]
@@ -247,7 +247,7 @@ Each plugin definition contains a `name` field. This was conflicting with the `s
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   services: {
@@ -269,7 +269,7 @@ Previously, you could set `types.dates` to a boolean or a string value, dependin
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   types: {
@@ -291,7 +291,7 @@ Previously, you could use a string value as a shorthand for the `types.include` 
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   types: '^MySchema', // [!code --]
@@ -311,7 +311,7 @@ Each plugin definition contains a `name` field. This was conflicting with the `t
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   types: {
@@ -403,7 +403,7 @@ export default {
 Previously, client packages would create a default client which you'd then import and configure.
 
 ```js
-import { client, createClient } from '@hey-api/client-fetch';
+import { client, createClient } from '@ts-sdk-gen/client-fetch';
 
 createClient({
   baseUrl: 'https://example.com',
@@ -430,7 +430,7 @@ console.log(client.getConfig().baseUrl); // <-- 'https://example.com'
 
 ### Required `client` option
 
-Client now has to be explicitly specified and `@hey-api/openapi-ts` will no longer generate a legacy Fetch API client by default. To preserve the previous default behavior, set the `client` option to `fetch`.
+Client now has to be explicitly specified and `@ts-sdk-gen/openapi-ts` will no longer generate a legacy Fetch API client by default. To preserve the previous default behavior, set the `client` option to `fetch`.
 
 ```js
 export default {
@@ -447,7 +447,7 @@ export default {
 The `services.methodNameBuilder()` function now provides a single `operation` argument instead of multiple cherry-picked properties from it.
 
 ```js
-import { createClient } from '@hey-api/openapi-ts';
+import { createClient } from '@ts-sdk-gen/openapi-ts';
 
 createClient({
   input: 'path/to/openapi.json',
@@ -497,7 +497,7 @@ export default {
 
 ### Removed `client` inference
 
-`@hey-api/openapi-ts` will no longer infer which client you want to generate. By default, we will create a `fetch` client. If you want a different client, you can specify it using the `client` option.
+`@ts-sdk-gen/openapi-ts` will no longer infer which client you want to generate. By default, we will create a `fetch` client. If you want a different client, you can specify it using the `client` option.
 
 ```js
 export default {
@@ -850,4 +850,4 @@ This config option has been removed. Generated types will behave the same as `us
 
 ## OpenAPI TypeScript Codegen
 
-`@hey-api/openapi-ts` was originally forked from Ferdi Koomen's [openapi-typescript-codegen](https://github.com/ferdikoomen/openapi-typescript-codegen). Therefore, we want you to be able to migrate your projects. Migration should be relatively straightforward if you follow the release notes on this page. Start on [v0.27.24](#v0-27-24) and scroll to the release you're migrating to.
+`@ts-sdk-gen/openapi-ts` was originally forked from Ferdi Koomen's [openapi-typescript-codegen](https://github.com/ferdikoomen/openapi-typescript-codegen). Therefore, we want you to be able to migrate your projects. Migration should be relatively straightforward if you follow the release notes on this page. Start on [v0.27.24](#v0-27-24) and scroll to the release you're migrating to.

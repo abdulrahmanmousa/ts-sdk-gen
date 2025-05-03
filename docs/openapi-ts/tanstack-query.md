@@ -10,7 +10,7 @@ import { embedProject } from '../embed'
 # TanStack Query
 
 ::: warning
-TanStack Query plugin is currently in beta. The interface might change before it becomes stable. We encourage you to leave feedback on [GitHub](https://github.com/hey-api/openapi-ts/issues).
+TanStack Query plugin is currently in beta. The interface might change before it becomes stable. We encourage you to leave feedback on [GitHub](https://github.com/ts-sdk-gen/openapi-ts/issues).
 :::
 
 [TanStack Query](https://tanstack.com/query) is a powerful asynchronous state management solution for TypeScript/JavaScript, React, Solid, Vue, Svelte, and Angular.
@@ -21,20 +21,20 @@ Live demo
 
 ## Features
 
-- seamless integration with `@hey-api/openapi-ts` ecosystem
+- seamless integration with `@ts-sdk-gen/openapi-ts` ecosystem
 - create query keys following the best practices
 - type-safe query options, infinite query options, and mutation options
 - minimal learning curve thanks to extending the underlying technology
 
 ## Installation
 
-Ensure you have already [configured](/openapi-ts/get-started) `@hey-api/openapi-ts`. Update your configuration to use the TanStack Query plugin.
+Ensure you have already [configured](/openapi-ts/get-started) `@ts-sdk-gen/openapi-ts`. Update your configuration to use the TanStack Query plugin.
 
 ::: code-group
 
 ```js [react]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [
@@ -46,7 +46,7 @@ export default {
 
 ```js [vue]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [
@@ -58,7 +58,7 @@ export default {
 
 ```js [angular]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [
@@ -70,7 +70,7 @@ export default {
 
 ```js [svelte]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [
@@ -82,7 +82,7 @@ export default {
 
 ```js [solid]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [

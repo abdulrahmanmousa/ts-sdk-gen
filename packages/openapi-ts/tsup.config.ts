@@ -4,7 +4,7 @@ export default defineConfig((options) => ({
   banner(ctx) {
     /**
      * fix dynamic require in ESM
-     * @link https://github.com/hey-api/openapi-ts/issues/1079
+     * @link https://github.com/ts-sdk-gen/openapi-ts/issues/1079
      */
     if (ctx.format === 'esm') {
       return {

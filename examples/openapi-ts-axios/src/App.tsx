@@ -144,7 +144,7 @@ function App() {
               alt="Hey API logo"
             />
           </a>
-          <Heading>@hey-api/openapi-ts 🤝 Axios</Heading>
+          <Heading>@ts-sdk-gen/openapi-ts 🤝 Axios</Heading>
         </Flex>
         <Section size="1" />
         <Flex direction="column" gapY="2">

@@ -30,7 +30,7 @@ nvm use 23
 ```typescript
 // Example configuration
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: './openapi-schema.json',
   output: {
     format: 'prettier',
@@ -52,7 +52,7 @@ pnpm run --recursive build && node packages/openapi-ts/bin/index.cjs -f openapi-
 also run
 
 ```bash
-pnpm add @hey-api/client-fetch
+pnpm add @ts-sdk-gengen/client-fetch
 ```
 
 this will install the client

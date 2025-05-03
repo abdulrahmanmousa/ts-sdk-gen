@@ -33,31 +33,31 @@ Live demo
 The fastest way to use `@hey-api/openapi-ts` is via npx
 
 ```sh
-npx @hey-api/openapi-ts -i path/to/openapi.json -o src/client -c @hey-api/client-fetch
+npx @hey-api/openapi-ts -i path/to/openapi.json -o src/client -c @ts-sdk-gen/client-fetch
 ```
 
 Congratulations on creating your first client! 🎉 You can learn more about the generated files on the [Output](/openapi-ts/output) page.
 
-Before you can make API requests with the client you've just created, you need to install `@hey-api/client-fetch` and configure it. Let's start by declaring your dependencies.
+Before you can make API requests with the client you've just created, you need to install `@ts-sdk-gen/client-fetch` and configure it. Let's start by declaring your dependencies.
 
 ## Installation
 
 ::: code-group
 
 ```sh [npm]
-npm install @hey-api/client-fetch && npm install @hey-api/openapi-ts -D
+npm install @ts-sdk-gen/client-fetch && npm install @hey-api/openapi-ts -D
 ```
 
 ```sh [pnpm]
-pnpm add @hey-api/client-fetch && pnpm add @hey-api/openapi-ts -D
+pnpm add @ts-sdk-gen/client-fetch && pnpm add @hey-api/openapi-ts -D
 ```
 
 ```sh [yarn]
-yarn add @hey-api/client-fetch && yarn add @hey-api/openapi-ts -D
+yarn add @ts-sdk-gen/client-fetch && yarn add @hey-api/openapi-ts -D
 ```
 
 ```sh [bun]
-bun add @hey-api/client-fetch && bun add @hey-api/openapi-ts -D
+bun add @ts-sdk-gen/client-fetch && bun add @hey-api/openapi-ts -D
 ```
 
 :::
@@ -86,7 +86,7 @@ You can also generate clients programmatically by importing `@hey-api/openapi-ts
 import { createClient } from '@hey-api/openapi-ts';
 
 createClient({
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
 });

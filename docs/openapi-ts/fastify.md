@@ -6,7 +6,7 @@ description: Fastify plugin for Hey API. Compatible with all our features.
 # Fastify
 
 ::: warning
-Fastify plugin is currently in beta. The interface might change before it becomes stable. We encourage you to leave feedback on [GitHub](https://github.com/hey-api/openapi-ts/issues).
+Fastify plugin is currently in beta. The interface might change before it becomes stable. We encourage you to leave feedback on [GitHub](https://github.com/ts-sdk-gen/openapi-ts/issues).
 :::
 
 [Fastify](https://fastify.dev/) is a fast and low overhead web framework for Node.js.
@@ -17,7 +17,7 @@ Live demo
 
 ## Features
 
-- seamless integration with `@hey-api/openapi-ts` ecosystem
+- seamless integration with `@ts-sdk-gen/openapi-ts` ecosystem
 - type-safe route handlers
 - minimal learning curve thanks to extending the underlying technology
 
@@ -27,11 +27,11 @@ Live demo
 To use this feature, you must opt in to the [experimental parser](/openapi-ts/configuration#parser).
 :::
 
-Ensure you have already [configured](/openapi-ts/get-started) `@hey-api/openapi-ts`. Update your configuration to use the Fastify plugin.
+Ensure you have already [configured](/openapi-ts/get-started) `@ts-sdk-gen/openapi-ts`. Update your configuration to use the Fastify plugin.
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   experimentalParser: true, // [!code ++]
   input: 'path/to/openapi.json',
   output: 'src/client',

@@ -201,7 +201,7 @@ export const createTypeRecordNode = (
   });
   // NOTE: We use the syntax `{ [key: string]: string }` because using a Record causes
   //       invalid types with circular dependencies. This is functionally the same.
-  // Ref: https://github.com/hey-api/openapi-ts/issues/370
+  // Ref: https://github.com/ts-sdk-gen/openapi-ts/issues/370
   const node = createTypeInterfaceNode({
     properties: [
       {

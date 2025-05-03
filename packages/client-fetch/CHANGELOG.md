@@ -1,4 +1,4 @@
-# @hey-api/client-fetch
+# @ts-sdk-gen/client-fetch
 
 ## 0.5.0
 

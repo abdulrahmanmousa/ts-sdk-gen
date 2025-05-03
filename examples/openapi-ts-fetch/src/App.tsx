@@ -1,6 +1,5 @@
 import './App.css';
 
-import { createClient } from '@hey-api/client-fetch';
 import * as Form from '@radix-ui/react-form';
 import { DownloadIcon, PlusIcon, ReloadIcon } from '@radix-ui/react-icons';
 import {
@@ -15,6 +14,7 @@ import {
   Text,
   TextField,
 } from '@radix-ui/themes';
+import { createClient } from '@ts-sdk-gen/client-fetch';
 import { useState } from 'react';
 
 import { PetSchema } from './client/schemas.gen';
@@ -149,7 +149,7 @@ function App() {
               alt="Hey API logo"
             />
           </a>
-          <Heading>@hey-api/openapi-ts 🤝 Fetch API</Heading>
+          <Heading>@ts-sdk-gen/openapi-ts 🤝 Fetch API</Heading>
         </Flex>
         <Section size="1" />
         <Flex direction="column" gapY="2">

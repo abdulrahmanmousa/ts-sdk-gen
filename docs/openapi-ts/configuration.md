@@ -1,37 +1,37 @@
 ---
 title: Configuration
-description: Configure @hey-api/openapi-ts.
+description: Configure @ts-sdk-gen/openapi-ts.
 ---
 
 # Configuration
 
-`@hey-api/openapi-ts` supports loading configuration from any file inside your project root folder supported by [jiti loader](https://github.com/unjs/c12?tab=readme-ov-file#-features). Below are the most common file formats.
+`@ts-sdk-gen/openapi-ts` supports loading configuration from any file inside your project root folder supported by [jiti loader](https://github.com/unjs/c12?tab=readme-ov-file#-features). Below are the most common file formats.
 
 ::: code-group
 
 ```js [openapi-ts.config.ts]
-import { defineConfig } from '@hey-api/openapi-ts';
+import { defineConfig } from '@ts-sdk-gen/openapi-ts';
 
 export default defineConfig({
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
 });
 ```
 
 ```js [openapi-ts.config.cjs]
-/** @type {import('@hey-api/openapi-ts').UserConfig} */
+/** @type {import('@ts-sdk-gen/openapi-ts').UserConfig} */
 module.exports = {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
 };
 ```
 
 ```js [openapi-ts.config.mjs]
-/** @type {import('@hey-api/openapi-ts').UserConfig} */
+/** @type {import('@ts-sdk-gen/openapi-ts').UserConfig} */
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
 };
@@ -46,7 +46,7 @@ Alternatively, you can use `openapi-ts.config.js` and configure the export state
 Input is the first thing you must define. It can be a local path, remote URL, or a string content resolving to an OpenAPI specification. Hey API supports all valid OpenAPI versions and file formats.
 
 ::: info
-We use [`@apidevtools/json-schema-ref-parser`](https://github.com/APIDevTools/json-schema-ref-parser) to resolve file locations. Please note that accessing a HTTPS URL on localhost has a known [workaround](https://github.com/hey-api/openapi-ts/issues/276).
+We use [`@apidevtools/json-schema-ref-parser`](https://github.com/APIDevTools/json-schema-ref-parser) to resolve file locations. Please note that accessing a HTTPS URL on localhost has a known [workaround](https://github.com/ts-sdk-gen/openapi-ts/issues/276).
 :::
 
 ## Output
@@ -54,7 +54,7 @@ We use [`@apidevtools/json-schema-ref-parser`](https://github.com/APIDevTools/js
 Output is the next thing to define. It can be either a string pointing to the destination folder or a configuration object containing the destination folder path and optional settings (these are described below).
 
 ::: tip
-You should treat the output folder as a dependency. Do not directly modify its contents as your changes might be erased when you run `@hey-api/openapi-ts` again.
+You should treat the output folder as a dependency. Do not directly modify its contents as your changes might be erased when you run `@ts-sdk-gen/openapi-ts` again.
 :::
 
 ## Formatting
@@ -65,7 +65,7 @@ To format your output folder contents, set `output.format` to a valid formatter.
 
 ```js [disabled]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: {
     format: false, // [!code ++]
@@ -76,7 +76,7 @@ export default {
 
 ```js [prettier]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: {
     format: 'prettier', // [!code ++]
@@ -87,7 +87,7 @@ export default {
 
 ```js [biome]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: {
     format: 'biome', // [!code ++]
@@ -108,7 +108,7 @@ To lint your output folder contents, set `output.lint` to a valid linter.
 
 ```js [disabled]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: {
     lint: false, // [!code ++]
@@ -119,7 +119,7 @@ export default {
 
 ```js [eslint]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: {
     lint: 'eslint', // [!code ++]
@@ -130,7 +130,7 @@ export default {
 
 ```js [biome]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: {
     lint: 'biome', // [!code ++]
@@ -141,7 +141,7 @@ export default {
 
 ```js [oxlint]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: {
     lint: 'oxlint', // [!code ++]
@@ -169,7 +169,7 @@ see https://github.com/unjs/c12/issues/92
 If you want to generate multiple clients with a single `openapi-ts` command, you can provide an array of configuration objects.
 
 ```js
-import { defineConfig } from '@hey-api/openapi-ts';
+import { defineConfig } from '@ts-sdk-gen/openapi-ts';
 
 export default defineConfig([
   {
@@ -199,7 +199,7 @@ If you're using OpenAPI 3.0 or newer, we encourage you to try out the experiment
 
 ```js [config]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   experimentalParser: true, // [!code ++]
   input: 'path/to/openapi.json',
   output: 'src/client',
@@ -207,7 +207,7 @@ export default {
 ```
 
 ```sh [cli]
-npx @hey-api/openapi-ts -i path/to/openapi.json -o src/client -c @hey-api/client-fetch -e
+npx @ts-sdk-gen/openapi-ts -i path/to/openapi.json -o src/client -c @ts-sdk-gen/client-fetch -e
 ```
 
 :::
@@ -228,7 +228,7 @@ If you work with large specifications and want to generate output from their sub
 
 ```js [include]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   experimentalParser: true, // [!code ++]
   input: {
     // match only the schema named `foo` and `GET` operation for the `/api/v1/foo` path // [!code ++]
@@ -241,7 +241,7 @@ export default {
 
 ```js [exclude]
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   experimentalParser: true, // [!code ++]
   input: {
     // match everything except for the schema named `foo` and `GET` operation for the `/api/v1/foo` path // [!code ++]
@@ -260,7 +260,7 @@ By default, you can't keep custom files in the `output.path` folder because it's
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: {
     clean: false, // [!code ++]
@@ -275,7 +275,7 @@ Setting `output.clean` to `false` may result in broken output. Ensure you typech
 
 ## Config API
 
-You can view the complete list of options in the [UserConfig](https://github.com/hey-api/openapi-ts/blob/main/packages/openapi-ts/src/types/config.ts) interface.
+You can view the complete list of options in the [UserConfig](https://github.com/ts-sdk-gen/openapi-ts/blob/main/packages/openapi-ts/src/types/config.ts) interface.
 
 <!--@include: ../examples.md-->
 <!--@include: ../sponsorship.md-->

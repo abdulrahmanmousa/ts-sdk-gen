@@ -23,7 +23,7 @@ export default defineConfig({
             text: 'Configuration',
           },
         ],
-        text: '@hey-api/openapi-ts',
+        text: '@ts-sdk-gen/openapi-ts',
       },
       {
         items: [

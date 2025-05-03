@@ -1,6 +1,5 @@
 import './App.css';
 
-import { createClient } from '@hey-api/client-fetch';
 import * as Form from '@radix-ui/react-form';
 import { DownloadIcon, PlusIcon, ReloadIcon } from '@radix-ui/react-icons';
 import {
@@ -16,6 +15,7 @@ import {
   TextField,
 } from '@radix-ui/themes';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { createClient } from '@ts-sdk-gen/client-fetch';
 import { useEffect, useState } from 'react';
 
 import {
@@ -169,7 +169,7 @@ function App() {
               alt="Hey API logo"
             />
           </a>
-          <Heading>@hey-api/openapi-ts 🤝 TanStack React Query</Heading>
+          <Heading>@ts-sdk-gen/openapi-ts 🤝 TanStack React Query</Heading>
         </Flex>
         <Section size="1" />
         <Flex direction="column" gapY="2">

@@ -1,6 +1,6 @@
 ---
 title: Transformers
-description: Learn about transforming payloads with @hey-api/openapi-ts.
+description: Learn about transforming payloads with @ts-sdk-gen/openapi-ts.
 ---
 
 # Transformers
@@ -10,7 +10,7 @@ JSON is the most commonly used data format in REST APIs. However, it does not ma
 One approach to this problem is using a [JSON superset](https://github.com/blitz-js/superjson). For most people, switching formats is not feasible. That's why we provide the `@hey-api/transformers` plugin.
 
 ::: warning
-Transformers currently handle only the most common use cases. If your data isn't being transformed as expected, we encourage you to leave feedback on [GitHub](https://github.com/hey-api/openapi-ts/issues).
+Transformers currently handle only the most common use cases. If your data isn't being transformed as expected, we encourage you to leave feedback on [GitHub](https://github.com/ts-sdk-gen/openapi-ts/issues).
 :::
 
 ## Considerations
@@ -25,7 +25,7 @@ Transformers handle only the most common scenarios. Some of the known limitation
 - only types defined through `$ref` are transformed
 - error responses are not transformed
 
-If your data isn't being transformed as expected, we encourage you to leave feedback on [GitHub](https://github.com/hey-api/openapi-ts/issues).
+If your data isn't being transformed as expected, we encourage you to leave feedback on [GitHub](https://github.com/ts-sdk-gen/openapi-ts/issues).
 
 ## Dates
 
@@ -33,7 +33,7 @@ To convert date strings into `Date` objects, use the `dates` configuration optio
 
 ```js
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [

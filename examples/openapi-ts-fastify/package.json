@@ -9,12 +9,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@hey-api/client-fetch": "workspace:*",
+    "@ts-sdk-gen/client-fetch": "workspace:*",
     "fastify": "5.1.0",
     "fastify-openapi-glue": "4.7.3"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "workspace:*",
+    "@ts-sdk-gengen/openapi-ts": "workspace:*",
     "eslint": "9.6.0",
     "prettier": "3.3.2",
     "typescript": "5.5.3",

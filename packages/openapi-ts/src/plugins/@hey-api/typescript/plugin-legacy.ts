@@ -594,7 +594,7 @@ const processServiceTypes = ({
     generateType({
       client,
       meta: {
-        $ref: '@hey-api/openapi-ts',
+        $ref: '@ts-sdk-gen/openapi-ts',
         name: treeName,
       },
       onNode,

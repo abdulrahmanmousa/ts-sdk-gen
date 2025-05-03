@@ -6,14 +6,14 @@ import type { OpenApiSchema } from './OpenApiSchema';
 /**
  * add only one type for now as that's needed to resolve the reported issue,
  * more types should be added though
- * {@link https://github.com/hey-api/openapi-ts/issues/612}
+ * {@link https://github.com/ts-sdk-gen/openapi-ts/issues/612}
  */
 type MediaType = 'application/json';
 
 /**
  * encoding interface should be added, not adding it for now as it's not needed
  * to resolve the issue reported
- * {@link https://github.com/hey-api/openapi-ts/issues/612}
+ * {@link https://github.com/ts-sdk-gen/openapi-ts/issues/612}
  */
 interface MediaTypeObject {
   example?: unknown;

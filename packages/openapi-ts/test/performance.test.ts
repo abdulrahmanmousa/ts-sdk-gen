@@ -15,7 +15,7 @@ describe('performance', () => {
     Performance.clear();
 
     await createClient({
-      client: '@hey-api/client-fetch',
+      client: '@ts-sdk-gen/client-fetch',
       input: V3_SPEC_PATH,
       output: toOutputPath('perf'),
     });
@@ -30,7 +30,7 @@ describe('performance', () => {
     Performance.clear();
 
     await createClient({
-      client: '@hey-api/client-fetch',
+      client: '@ts-sdk-gen/client-fetch',
       input: V3_SPEC_PATH,
       output: toOutputPath('perf'),
     });
@@ -45,7 +45,7 @@ describe('performance', () => {
     Performance.clear();
 
     await createClient({
-      client: '@hey-api/client-fetch',
+      client: '@ts-sdk-gen/client-fetch',
       experimentalParser: true,
       input: V3_1_X_SPEC_PATH,
       output: toOutputPath('perf'),

@@ -357,7 +357,7 @@ const processSchemaType = ({
     }
 
     console.warn(
-      `❗️ Transformers warning: schema ${JSON.stringify(schema)} is too complex and won't be currently processed. This will likely produce an incomplete transformer which is not what you want. Please open an issue if you'd like this improved https://github.com/hey-api/openapi-ts/issues`,
+      `❗️ Transformers warning: schema ${JSON.stringify(schema)} is too complex and won't be currently processed. This will likely produce an incomplete transformer which is not what you want. Please open an issue if you'd like this improved https://github.com/ts-sdk-gen/openapi-ts/issues`,
     );
   }
 
@@ -381,7 +381,7 @@ export const handler: PluginHandler<Config> = ({ context, plugin }) => {
     if (response.items && response.items.length > 1) {
       if (context.config.debug) {
         console.warn(
-          `❗️ Transformers warning: route ${`${operation.method.toUpperCase()} ${operation.path}`} has ${response.items.length} non-void success responses. This is currently not handled and we will not generate a response transformer. Please open an issue if you'd like this feature https://github.com/hey-api/openapi-ts/issues`,
+          `❗️ Transformers warning: route ${`${operation.method.toUpperCase()} ${operation.path}`} has ${response.items.length} non-void success responses. This is currently not handled and we will not generate a response transformer. Please open an issue if you'd like this feature https://github.com/ts-sdk-gen/openapi-ts/issues`,
         );
       }
       return;

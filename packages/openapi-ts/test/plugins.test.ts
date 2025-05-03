@@ -25,7 +25,7 @@ for (const version of versions) {
         Pick<Required<UserConfig>, 'plugins'> &
         Pick<Partial<UserConfig>, 'input'>,
     ): UserConfig => ({
-      client: '@hey-api/client-fetch',
+      client: '@ts-sdk-gen/client-fetch',
       experimentalParser: true,
       input: path.join(__dirname, 'spec', version, 'full.json'),
       ...userConfig,
@@ -261,7 +261,7 @@ for (const version of versions) {
       };
 
       await createClient({
-        client: '@hey-api/client-fetch',
+        client: '@ts-sdk-gen/client-fetch',
         experimentalParser: true,
         input: path.join(__dirname, 'spec', '3.1.x', 'full.json'),
         output: path.join(outputDir, myPlugin.name, 'default'),
@@ -288,7 +288,7 @@ for (const version of versions) {
 
       await expect(() =>
         createClient({
-          client: '@hey-api/client-fetch',
+          client: '@ts-sdk-gen/client-fetch',
           experimentalParser: true,
           input: path.join(__dirname, 'spec', '3.1.x', 'full.json'),
           output: path.join(outputDir, myPlugin.name, 'default'),
@@ -314,7 +314,7 @@ for (const version of versions) {
 
       await expect(() =>
         createClient({
-          client: '@hey-api/client-fetch',
+          client: '@ts-sdk-gen/client-fetch',
           experimentalParser: true,
           input: path.join(__dirname, 'spec', '3.1.x', 'full.json'),
           output: path.join(outputDir, myPlugin.name, 'default'),

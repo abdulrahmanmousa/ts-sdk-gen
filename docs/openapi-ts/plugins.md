@@ -18,7 +18,7 @@ Apart from being responsible for the default output, Hey API plugins are the fou
 
 ## Third Party
 
-These plugins help reduce boilerplate associated with third-party dependencies. Hey API natively supports the most popular packages. Please open an issue on [GitHub](https://github.com/hey-api/openapi-ts/issues) if you'd like us to support your favorite package.
+These plugins help reduce boilerplate associated with third-party dependencies. Hey API natively supports the most popular packages. Please open an issue on [GitHub](https://github.com/ts-sdk-gen/openapi-ts/issues) if you'd like us to support your favorite package.
 
 - [`@tanstack/angular-query-experimental`](/openapi-ts/tanstack-query) - TanStack Query functions and query keys
 - [`@tanstack/react-query`](/openapi-ts/tanstack-query) - TanStack Query functions and query keys
@@ -32,12 +32,12 @@ These plugins help reduce boilerplate associated with third-party dependencies. 
 
 Featured community plugins.
 
-- [add plugin](https://github.com/hey-api/openapi-ts/pulls)
+- [add plugin](https://github.com/ts-sdk-gen/openapi-ts/pulls)
 
 ## Custom
 
 ::: warning
-Plugins API is in development. The interface might change before it becomes stable. We encourage you to leave feedback on [GitHub](https://github.com/hey-api/openapi-ts/issues).
+Plugins API is in development. The interface might change before it becomes stable. We encourage you to leave feedback on [GitHub](https://github.com/ts-sdk-gen/openapi-ts/issues).
 :::
 
 If the existing plugins do not handle your use case or you're working with proprietary packages, you might want to create your own plugin.
@@ -84,7 +84,10 @@ export interface Config {
 ::: code-group
 
 ```ts [config.ts]
-import type { DefineConfig, PluginConfig } from '@hey-api/openapi-ts/plugins';
+import type {
+  DefineConfig,
+  PluginConfig,
+} from '@ts-sdk-gen/openapi-ts/plugins';
 
 import { handler } from './plugin';
 import type { Config } from './types';
@@ -115,7 +118,7 @@ Lastly, we define the `_handler` method which will be responsible for generating
 ::: code-group
 
 ```ts [plugin.ts]
-import type { PluginHandler } from '@hey-api/openapi-ts/plugins';
+import type { PluginHandler } from '@ts-sdk-gen/openapi-ts/plugins';
 
 import type { Config } from './types';
 
@@ -152,7 +155,7 @@ And that's it! We can now register our plugin in the Hey API configuration.
 import { defineConfig } from './src/my-plugin';
 
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: 'path/to/openapi.json',
   output: 'src/client',
   plugins: [

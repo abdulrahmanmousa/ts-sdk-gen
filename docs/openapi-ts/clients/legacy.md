@@ -9,7 +9,7 @@ import { embedProject } from '../../embed'
 
 # Legacy Clients
 
-Before client packages, clients were generated using `@hey-api/openapi-ts`. In fact, `@hey-api/openapi-ts` still supports generating legacy clients. You can generate them with the `client` config option.
+Before client packages, clients were generated using `@ts-sdk-gen/openapi-ts`. In fact, `@ts-sdk-gen/openapi-ts` still supports generating legacy clients. You can generate them with the `client` config option.
 
 ::: code-group
 

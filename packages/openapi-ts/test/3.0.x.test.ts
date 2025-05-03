@@ -17,7 +17,7 @@ const outputDir = path.join(__dirname, 'generated', VERSION);
 
 describe(`OpenAPI ${VERSION}`, () => {
   const createConfig = (userConfig: UserConfig): UserConfig => ({
-    client: '@hey-api/client-fetch',
+    client: '@ts-sdk-gen/client-fetch',
     experimentalParser: true,
     plugins: ['@hey-api/typescript'],
     ...userConfig,

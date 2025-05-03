@@ -51,7 +51,7 @@
     "format": "prettier --write .",
     "lint:fix": "prettier --check --write . && eslint . --fix",
     "lint": "prettier --check . && eslint .",
-    "openapi-ts": "pnpm --filter @hey-api/openapi-ts --",
+    "openapi-ts": "pnpm --filter @ts-sdk-gen/openapi-ts --",
     "prepare": "husky",
     "test:coverage": "pnpm --recursive test:coverage",
     "test:e2e": "pnpm --recursive test:e2e",

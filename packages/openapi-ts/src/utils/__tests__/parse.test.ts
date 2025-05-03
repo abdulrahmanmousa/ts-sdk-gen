@@ -61,7 +61,7 @@ describe('operationNameFn', () => {
   const options3: Parameters<typeof setConfig>[0] = {
     ...optionsCommon,
     client: {
-      name: '@hey-api/client-fetch',
+      name: '@ts-sdk-gen/client-fetch',
     },
     plugins: {
       '@hey-api/sdk': {
@@ -77,7 +77,7 @@ describe('operationNameFn', () => {
   const options4: Parameters<typeof setConfig>[0] = {
     ...optionsCommon,
     client: {
-      name: '@hey-api/client-fetch',
+      name: '@ts-sdk-gen/client-fetch',
     },
     plugins: {
       '@hey-api/sdk': {

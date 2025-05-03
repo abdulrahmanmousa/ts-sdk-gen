@@ -1,7 +1,7 @@
-import { defineConfig } from '@hey-api/openapi-ts';
+import { defineConfig } from '@ts-sdk-gen/openapi-ts';
 
 export default defineConfig({
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gengen/client-fetch',
   input:
     'https://raw.githubusercontent.com/swagger-api/swagger-petstore/master/src/main/resources/openapi.yaml',
   output: {
@@ -10,11 +10,11 @@ export default defineConfig({
     path: './src/client',
   },
   plugins: [
-    '@hey-api/schemas',
-    '@hey-api/sdk',
+    '@ts-sdk-gen/schemas',
+    '@ts-sdk-gen/sdk',
     {
       enums: 'javascript',
-      name: '@hey-api/typescript',
+      name: '@ts-sdk-gen/typescript',
     },
     '@tanstack/react-query',
   ],

@@ -37,8 +37,8 @@ export default defineConfig({
       provider: 'local',
     },
     socialLinks: [
-      { icon: 'npm', link: 'https://npmjs.com/package/@hey-api/openapi-ts' },
-      { icon: 'github', link: 'https://github.com/hey-api/openapi-ts' },
+      { icon: 'npm', link: 'https://npmjs.com/package/@ts-sdk-gen/openapi-ts' },
+      { icon: 'github', link: 'https://github.com/ts-sdk-gen/openapi-ts' },
     ],
   },
   title: 'Hey API',

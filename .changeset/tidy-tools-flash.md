@@ -1,5 +1,5 @@
 ---
-'@hey-api/openapi-ts': minor
+'@ts-sdk-gen/openapi-ts': minor
 ---
 
 feat: add typescript.enumsCase option

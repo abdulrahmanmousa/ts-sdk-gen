@@ -280,7 +280,7 @@ export const handlerLegacy: PluginLegacyHandler<Config> = ({
       if (nonVoidResponses.length > 1) {
         if (config.debug) {
           console.warn(
-            `❗️ Transformers warning: route ${getOperationKey(operation)} has ${nonVoidResponses.length} non-void success responses. This is currently not handled and we will not generate a response transformer. Please open an issue if you'd like this feature https://github.com/hey-api/openapi-ts/issues`,
+            `❗️ Transformers warning: route ${getOperationKey(operation)} has ${nonVoidResponses.length} non-void success responses. This is currently not handled and we will not generate a response transformer. Please open an issue if you'd like this feature https://github.com/ts-sdk-gen/openapi-ts/issues`,
           );
         }
         continue;

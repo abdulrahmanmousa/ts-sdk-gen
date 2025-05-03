@@ -1,5 +1,5 @@
 export default {
-  client: '@hey-api/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input: './openapi-schema.json',
   output: {
     format: 'prettier',
