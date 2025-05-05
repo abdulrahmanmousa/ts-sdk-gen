@@ -85,6 +85,7 @@ export const watchFile = ({
 
   const filePath = config.input.path;
   const isRemote = isUrl(filePath);
+  const skipHeadRequest = config.watch.skipHeadRequest || false;
 
   if (!isRemote) {
     const localPath = path.resolve(process.cwd(), filePath);
@@ -127,60 +128,69 @@ export const watchFile = ({
     console.log(`👀 Watching local file ${localPath} for changes...`);
   }
 
-  const createContentHash = (content: string): string => {
-    let hash = 0;
-    for (let i = 0; i < content.length; i++) {
-      hash = (hash << 5) - hash + content.charCodeAt(i);
-      hash |= 0;
-    }
-    return String(hash);
-  };
+  const createContentHash = (content: string): string =>
+    crypto.createHash('md5').update(content).digest('hex');
 
   const checkRemoteFile = async (): Promise<boolean> => {
     try {
-      const headResponse = await fetch(filePath, { method: 'HEAD' });
-      const etag = headResponse.headers.get('etag');
-      const modifiedHeader = headResponse.headers.get('last-modified');
+      let headersChanged = false;
 
-      // Initialize lastEtag if it's empty
-      if (etag && lastEtag === '') {
-        lastEtag = etag;
-        saveCachedMetadata(filePath, {
-          lastContentHash,
-          lastEtag,
-          lastModified,
-        });
-        return false;
-      }
+      if (!skipHeadRequest) {
+        try {
+          const headResponse = await fetch(filePath, { method: 'HEAD' });
 
-      if (etag && etag !== lastEtag) {
-        lastEtag = etag;
-        saveCachedMetadata(filePath, {
-          lastContentHash,
-          lastEtag,
-          lastModified,
-        });
-        return true;
-      }
+          if (headResponse.ok) {
+            const etag = headResponse.headers.get('etag');
+            const modifiedHeader = headResponse.headers.get('last-modified');
 
-      if (modifiedHeader) {
-        const modifiedTime = new Date(modifiedHeader).getTime();
-        if (modifiedTime > lastModified) {
-          lastModified = modifiedTime;
-          saveCachedMetadata(filePath, {
-            lastContentHash,
-            lastEtag,
-            lastModified,
-          });
-          return true;
+            if (etag) {
+              if (lastEtag === '') {
+                lastEtag = etag;
+                saveCachedMetadata(filePath, {
+                  lastContentHash,
+                  lastEtag,
+                  lastModified,
+                });
+              } else if (etag !== lastEtag) {
+                lastEtag = etag;
+                headersChanged = true;
+              }
+            }
+
+            if (modifiedHeader) {
+              const modifiedTime = new Date(modifiedHeader).getTime();
+              if (modifiedTime > lastModified) {
+                lastModified = modifiedTime;
+                headersChanged = true;
+              }
+            }
+
+            if (headersChanged) {
+              saveCachedMetadata(filePath, {
+                lastContentHash,
+                lastEtag,
+                lastModified,
+              });
+              return true;
+            }
+          }
+        } catch (error) {
+          console.warn(
+            `⚠️ HEAD request failed for ${filePath}, falling back to content comparison`,
+          );
         }
       }
 
       const response = await fetch(filePath);
+      if (!response.ok) {
+        throw new Error(
+          `Failed to fetch ${filePath}: ${response.status} ${response.statusText}`,
+        );
+      }
+
       const content = await response.text();
       const contentHash = createContentHash(content);
 
-      // Initialize lastContentHash if it's empty
       if (lastContentHash === '') {
         lastContentHash = contentHash;
         saveCachedMetadata(filePath, {
@@ -201,7 +211,7 @@ export const watchFile = ({
         return true;
       }
 
-      return false;
+      return headersChanged;
     } catch (error) {
       console.error(`❌ Error checking remote file ${filePath}:`, error);
       return false;

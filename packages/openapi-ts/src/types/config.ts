@@ -38,6 +38,13 @@ export interface Watch {
    */
   interval: number;
   /**
+   * Skip HEAD request and rely only on content comparison?
+   * Enable this for APIs that don't properly support HEAD or Last-Modified
+   *
+   * @default false
+   */
+  skipHeadRequest?: boolean;
+  /**
    * Timeout in milliseconds after which to stop watching
    *
    * @default 0
