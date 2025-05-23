@@ -301,7 +301,7 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
 
         // Generate infinite queries
         if (
-          // plugin.infiniteQueryOptions &&
+          plugin.infiniteQueryOptions &&
           (['GET'] as ReadonlyArray<Method>).includes(operation.method)
         ) {
           // Find potential pagination fields
