@@ -7,7 +7,7 @@ export const defaultConfig: PluginConfig<Config> = {
   _dependencies: ['@hey-api/sdk', '@hey-api/typescript'],
   _handler: handler,
   _handlerLegacy: handlerLegacy,
-  infiniteQueryOptions: true,
+  infiniteQueryOptions: false,
   mutationOptions: true,
   name: '@tanstack/solid-query',
   output: '@tanstack/solid-query',
