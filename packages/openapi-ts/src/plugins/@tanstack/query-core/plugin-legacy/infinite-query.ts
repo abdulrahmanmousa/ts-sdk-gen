@@ -5,44 +5,11 @@ import { clientApi } from '../../../../generate/client';
 import type { Files } from '../../../../types/utils';
 import { createInfiniteParamsFn } from './constants';
 
-// Add a simple function to handle page parameter extraction
-export const createInfiniteParams = (
-  queryKey: any[],
-  pageParams: Record<string, any>,
-) => {
-  const params = { ...queryKey[0] };
-
-  // Handle different parameter locations
-  if (pageParams) {
-    // Add pagination parameter to query params
-    if (!params.query) params.query = {};
-    Object.assign(params.query, pageParams);
-
-    // Also potentially handle other locations like path, body, etc.
-    if (pageParams.body) {
-      if (!params.body) params.body = {};
-      Object.assign(params.body, pageParams.body);
-    }
-
-    if (pageParams.path) {
-      if (!params.path) params.path = {};
-      Object.assign(params.path, pageParams.path);
-    }
-  }
-
-  return params;
-};
-
 export const createInfiniteParamsFunction = ({
   file,
 }: {
   file: Files[keyof Files];
 }) => {
-  // Add the main createInfiniteParams function
-  file.add(
-    `export const createInfiniteParams = ${createInfiniteParams.toString()};`,
-  );
-
   // Original createInfiniteParamsFn (which may still be used elsewhere)
   const fn = compiler.constVariable({
     expression: compiler.arrowFunction({
