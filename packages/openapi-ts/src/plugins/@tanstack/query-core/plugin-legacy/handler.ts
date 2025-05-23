@@ -15,7 +15,7 @@ import {
   infiniteQueryOptionsFn,
   // mutationOptionsFn,
   queryOptionsFn,
-  // toInfiniteQueryOptionsName,
+  toInfiniteQueryOptionsName,
   toQueryKeyName,
   toQueryOptionsName,
 } from './constants';
@@ -437,6 +437,80 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
               }),
             });
             file.add(queryKeyStatement);
+
+            // Create infinite query options function
+            const infiniteOptionsStatement = compiler.constVariable({
+              exportConst: true,
+              expression: compiler.arrowFunction({
+                parameters: [
+                  {
+                    isRequired,
+                    name: 'options',
+                    type: typeData,
+                  },
+                  {
+                    isRequired: false,
+                    name: 'hookOptions',
+                    type: `Omit<InfiniteQueryOptions<${typeResponse} | undefined>, 'queryKey' | 'queryFn'>`,
+                  },
+                ],
+                statements: [
+                  compiler.returnFunctionCall({
+                    args: [
+                      compiler.objectExpression({
+                        obj: [
+                          {
+                            key: 'queryFn',
+                            value: compiler.arrowFunction({
+                              async: true,
+                              multiLine: true,
+                              statements: [
+                                compiler.constVariable({
+                                  destructure: true,
+                                  expression: compiler.awaitExpression({
+                                    expression: compiler.callExpression({
+                                      functionName: queryFn,
+                                      parameters: [
+                                        compiler.objectExpression({
+                                          multiLine: true,
+                                          obj: [{ spread: 'options' }],
+                                        }),
+                                      ],
+                                    }),
+                                  }),
+                                  name: 'data',
+                                }),
+                                compiler.returnVariable({
+                                  expression: 'data',
+                                }),
+                              ],
+                            }),
+                          },
+                          {
+                            key: 'queryKey',
+                            value: compiler.callExpression({
+                              functionName: toQueryKeyName({
+                                config,
+                                id: operation.name,
+                                isInfinite: true,
+                                operation,
+                              }),
+                              parameters: ['options'],
+                            }),
+                          },
+                          {
+                            spread: 'hookOptions',
+                          },
+                        ],
+                      }),
+                    ],
+                    name: infiniteQueryOptionsFn,
+                  }),
+                ],
+              }),
+              name: toInfiniteQueryOptionsName(operation),
+            });
+            file.add(infiniteOptionsStatement);
 
             // Create the corresponding hook function
             createUseItemHook({
