@@ -80,7 +80,7 @@ for (const version of versions) {
       },
       {
         config: createConfig({
-          client: '@hey-api/client-axios',
+          client: '@ts-sdk-gen/client-axios',
           output: 'axios',
           plugins: ['@tanstack/angular-query-experimental'],
         }),
@@ -89,7 +89,7 @@ for (const version of versions) {
       },
       {
         config: createConfig({
-          client: '@hey-api/client-axios',
+          client: '@ts-sdk-gen/client-axiosios',
           output: 'axios',
           plugins: ['@tanstack/react-query'],
         }),
@@ -97,7 +97,7 @@ for (const version of versions) {
       },
       {
         config: createConfig({
-          client: '@hey-api/client-axios',
+          client: '@ts-sdk-gen/client-axiosios',
           output: 'axios',
           plugins: ['@tanstack/solid-query'],
         }),
@@ -105,7 +105,7 @@ for (const version of versions) {
       },
       {
         config: createConfig({
-          client: '@hey-api/client-axios',
+          client: '@ts-sdk-gen/client-axiosios',
           output: 'axios',
           plugins: ['@tanstack/svelte-query'],
         }),
@@ -113,7 +113,7 @@ for (const version of versions) {
       },
       {
         config: createConfig({
-          client: '@hey-api/client-axios',
+          client: '@ts-sdk-gen/client-axiosios',
           output: 'axios',
           plugins: ['@tanstack/vue-query'],
         }),

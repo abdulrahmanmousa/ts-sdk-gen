@@ -1,7 +1,7 @@
 import { defineConfig } from '@ts-sdk-gen/openapi-ts';
 
 export default defineConfig({
-  client: '@ts-sdk-gengen/client-fetch',
+  client: '@ts-sdk-gen/client-fetch',
   input:
     'https://raw.githubusercontent.com/swagger-api/swagger-petstore/master/src/main/resources/openapi.yaml',
   output: {

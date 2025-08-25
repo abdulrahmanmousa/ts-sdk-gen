@@ -96,7 +96,7 @@ export const createTypeError = ({
     });
   }
 
-  if (config.client.name === '@hey-api/client-axios') {
+  if (config.client.name === '@ts-sdk-gen/client-axios') {
     const axiosError = file.import({
       asType: true,
       module: 'axios',

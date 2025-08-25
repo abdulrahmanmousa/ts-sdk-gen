@@ -60,7 +60,9 @@ export const toQueryKeyName = ({
 
 export const getClientBaseUrlKey = () => {
   const config = getConfig();
-  return config.client.name === '@hey-api/client-axios' ? 'baseURL' : 'baseUrl';
+  return config.client.name === '@ts-sdk-gen/client-axios'
+    ? 'baseURL'
+    : 'baseUrl';
 };
 
 export const getPaginationIn = (parameter: OperationParameter) => {

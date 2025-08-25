@@ -4,7 +4,7 @@ import {
   createClient,
   createConfig,
   type Options,
-} from '@ts-sdk-gengen/client-fetch';
+} from '@ts-sdk-gen/client-fetch';
 
 import type {
   CreatePetsData,

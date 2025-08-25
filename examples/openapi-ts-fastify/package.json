@@ -14,7 +14,7 @@
     "fastify-openapi-glue": "4.7.3"
   },
   "devDependencies": {
-    "@ts-sdk-gengen/openapi-ts": "workspace:*",
+    "@ts-sdk-gen/openapi-ts": "workspace:*",
     "eslint": "9.6.0",
     "prettier": "3.3.2",
     "typescript": "5.5.3",

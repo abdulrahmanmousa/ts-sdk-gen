@@ -100,7 +100,7 @@ importers:
 
   examples/openapi-ts-axios:
     dependencies:
-      '@hey-api/client-axios':
+      '@ts-sdk-gen/client-axios':
         specifier: workspace:*
         version: link:../../packages/client-axios
       '@radix-ui/react-form':

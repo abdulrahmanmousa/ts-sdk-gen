@@ -21,24 +21,24 @@ Live demo
 
 ## Installation
 
-Start by adding `@hey-api/client-axios` to your dependencies.
+Start by adding `@ts-sdk-gen/client-axios` to your dependencies.
 
 ::: code-group
 
 ```sh [npm]
-npm install @hey-api/client-axios
+npm install @ts-sdk-gen/client-axiosios
 ```
 
 ```sh [pnpm]
-pnpm add @hey-api/client-axios
+pnpm add @ts-sdk-gen/client-axiosios
 ```
 
 ```sh [yarn]
-yarn add @hey-api/client-axios
+yarn add @ts-sdk-gen/client-axiosios
 ```
 
 ```sh [bun]
-bun add @hey-api/client-axios
+bun add @ts-sdk-gen/client-axiosios
 ```
 
 :::
@@ -47,7 +47,7 @@ Ensure you have already [configured](/openapi-ts/get-started) `@ts-sdk-gen/opena
 
 ```js
 export default {
-  client: '@hey-api/client-axios', // [!code ++]
+  client: '@ts-sdk-gen/client-axiosios', // [!code ++]
   input: 'path/to/openapi.json',
   output: 'src/client',
 };
@@ -70,7 +70,7 @@ client.setConfig({
 If you aren't using SDKs, you can create your own client instance.
 
 ```js
-import { createClient } from '@hey-api/client-axios';
+import { createClient } from '@ts-sdk-gen/client-axiosios';
 
 const client = createClient({
   baseURL: 'https://example.com',
@@ -115,7 +115,7 @@ You can pass any Axios configuration option to `setConfig()`, and even your own 
 If you need to create a client pointing to a different domain, you can create your own client instance.
 
 ```js
-import { createClient } from '@hey-api/client-axios';
+import { createClient } from '@ts-sdk-gen/client-axiosios';
 
 const myClient = createClient({
   baseURL: 'https://example.com',
@@ -148,7 +148,7 @@ Sometimes, you may not want to declare client packages as a dependency. This sce
 export default {
   client: {
     bundle: true, // [!code ++]
-    name: '@hey-api/client-axios',
+    name: '@ts-sdk-gen/client-axiosios',
   },
   input: 'path/to/openapi.json',
   output: 'src/client',

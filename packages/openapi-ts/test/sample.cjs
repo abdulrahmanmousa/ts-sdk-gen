@@ -5,7 +5,7 @@ const main = async () => {
   const config = {
     client: {
       // bundle: true,
-      name: '@hey-api/client-axios',
+      name: '@ts-sdk-gen/client-axios',
       // name: '@ts-sdk-gen/client-fetch',
     },
     // debug: true,

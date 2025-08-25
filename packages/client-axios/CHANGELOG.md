@@ -1,4 +1,4 @@
-# @hey-api/client-axios
+# @ts-sdk-gen/client-axios
 
 ## 0.2.11
 

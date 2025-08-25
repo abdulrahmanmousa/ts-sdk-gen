@@ -5,7 +5,7 @@ import {
   type MutationOptions,
   queryOptions,
 } from '@tanstack/angular-query-experimental';
-import type { OptionsLegacyParser } from '@ts-sdk-gengen/client-fetch';
+import type { OptionsLegacyParser } from '@ts-sdk-gen/client-fetch';
 
 import {
   addPet,

@@ -4,7 +4,7 @@ import {
   createClient,
   createConfig,
   type OptionsLegacyParser,
-} from '@hey-api/client-axios';
+} from '@ts-sdk-gen/client-axios';
 
 import type {
   AddPetData,

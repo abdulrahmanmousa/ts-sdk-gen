@@ -94,7 +94,9 @@ const TOptionsType = 'TOptions';
 
 const getClientBaseUrlKey = () => {
   const config = getConfig();
-  return config.client.name === '@hey-api/client-axios' ? 'baseURL' : 'baseUrl';
+  return config.client.name === '@ts-sdk-gen/client-axios'
+    ? 'baseURL'
+    : 'baseUrl';
 };
 
 const createInfiniteParamsFunction = ({
@@ -598,7 +600,7 @@ const useTypeError = ({
       name: 'DefaultError',
     });
   }
-  if (context.config.client.name === '@hey-api/client-axios') {
+  if (context.config.client.name === '@ts-sdk-gen/client-axiosios') {
     const axiosError = file.import({
       asType: true,
       module: 'axios',

@@ -5,7 +5,7 @@ import {
   queryOptions,
   type UseMutationOptions,
 } from '@tanstack/react-query';
-import type { OptionsLegacyParser } from '@ts-sdk-gengen/client-fetch';
+import type { OptionsLegacyParser } from '@ts-sdk-gen/client-fetch';
 
 import {
   addPet,

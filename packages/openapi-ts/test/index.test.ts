@@ -150,7 +150,7 @@ describe('OpenAPI v3', () => {
     },
     {
       config: createConfig({
-        client: '@hey-api/client-axios',
+        client: '@ts-sdk-gen/client-axios',
       }),
       description: 'generate Axios client',
       name: 'v3-hey-api-client-axios',
@@ -159,7 +159,7 @@ describe('OpenAPI v3', () => {
       config: createConfig({
         client: {
           bundle: true,
-          name: '@hey-api/client-axios',
+          name: '@ts-sdk-gen/client-axiosios',
         },
       }),
       description: 'generate bundled Axios client',
@@ -167,7 +167,7 @@ describe('OpenAPI v3', () => {
     },
     {
       config: createConfig({
-        client: '@hey-api/client-axios',
+        client: '@ts-sdk-gen/client-axiosios',
         plugins: [
           {
             enums: 'javascript',
