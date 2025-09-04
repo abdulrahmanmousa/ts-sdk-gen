@@ -1,6 +1,6 @@
 {
   "name": "@ts-sdk-gen/openapi-ts",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Public @hey-api monorepo",
   "private": false,
   "homepage": "https://github.com/abdulrahmanmousa/ts-sdk-gen.git",

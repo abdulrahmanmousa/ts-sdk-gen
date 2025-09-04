@@ -480,10 +480,11 @@ export async function createClient(
 
   // Process each config
   for (const config of configs) {
-    // const client = await createClientFn(config);
-    // if (client && 'version' in client) {
-    //   clients.push(client);
-    // }
+    // Generate initial client
+    const client = await createClientFn(config);
+    if (client && 'version' in client) {
+      clients.push(client);
+    }
 
     // Set up file watching if enabled
     if (config.watch.enabled) {
