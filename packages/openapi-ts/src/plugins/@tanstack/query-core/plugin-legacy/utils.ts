@@ -219,7 +219,7 @@ export const createUseItemHook = ({
     expression: compiler.arrowFunction({
       parameters: [
         {
-          isRequired: hookType !== 'useMutation',
+          isRequired: false,
           name: 'dataOptions',
           type: typeData,
         },
@@ -238,7 +238,7 @@ export const createUseItemHook = ({
                 {
                   spread: compiler.callExpression({
                     functionName: OptionsFunctionName,
-                    parameters: ['dataOptions', 'hookOptions'],
+                    parameters: ['dataOptions ?? {}', 'hookOptions'],
                   }),
                 },
               ],

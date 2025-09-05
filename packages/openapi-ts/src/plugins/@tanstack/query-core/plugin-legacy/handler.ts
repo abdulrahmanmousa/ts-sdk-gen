@@ -210,7 +210,7 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
             expression: compiler.arrowFunction({
               parameters: [
                 {
-                  isRequired,
+                  isRequired: false,
                   name: 'options',
                   type: typeData,
                 },
@@ -240,7 +240,7 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
                                       compiler.objectExpression({
                                         multiLine: true,
                                         obj: [
-                                          { spread: 'options' },
+                                          { spread: 'options ?? {}' },
                                           // { spread: 'queryKey[0]' },
                                           // { key: 'signal', shorthand: true },
                                           // { key: 'throwOnError', value: true },
@@ -265,7 +265,7 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
                               id: operation.name,
                               operation,
                             }),
-                            parameters: ['options'],
+                            parameters: ['options ?? {}'],
                           }),
                         },
                         {
@@ -449,7 +449,7 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
               expression: compiler.arrowFunction({
                 parameters: [
                   {
-                    isRequired,
+                    isRequired: false,
                     name: 'options',
                     type: typeData,
                   },
@@ -478,7 +478,7 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
                                       parameters: [
                                         compiler.objectExpression({
                                           multiLine: true,
-                                          obj: [{ spread: 'options' }],
+                                          obj: [{ spread: 'options ?? {}' }],
                                         }),
                                       ],
                                     }),
@@ -500,7 +500,7 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
                                 isInfinite: true,
                                 operation,
                               }),
-                              parameters: ['options'],
+                              parameters: ['options ?? {}'],
                             }),
                           },
                           {
