@@ -30,7 +30,7 @@ export const createMutationOptions = ({
       {
         isRequired: false,
         name: 'hookOptions',
-        type: `Omit<MutationOptions<${typeResponse}, ${typeError.name}, ${typeData}>, 'mutationKey' | 'mutationFn'>`,
+        type: `Omit<MutationOptions<TResponse, ${typeError.name}, ${typeData}>, 'mutationKey' | 'mutationFn'>`,
       },
     ],
     statements: [
@@ -86,11 +86,17 @@ export const createMutationOptions = ({
           ],
         }),
         name: mutationOptionsFn,
-        typeName: `${mutationsType}<${typeResponse}, ${typeError.name}, ${typeData}>`,
+        typeName: `${mutationsType}<TResponse, ${typeError.name}, ${typeData}>`,
       }),
       compiler.returnVariable({
         expression: mutationOptionsFn,
       }),
+    ],
+    types: [
+      {
+        default: compiler.typeNode(typeResponse),
+        name: 'TResponse',
+      },
     ],
   });
 

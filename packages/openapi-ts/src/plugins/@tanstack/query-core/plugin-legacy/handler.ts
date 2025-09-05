@@ -179,7 +179,6 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
             operation,
             typesModulePath,
           });
-
           const isRequired = isOperationParameterRequired(operation.parameters);
 
           // Create query key function
@@ -218,7 +217,7 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
                 {
                   isRequired: false,
                   name: 'hookOptions',
-                  type: `Omit<QueryOptions<${typeResponse} | undefined>, 'queryKey' | 'queryFn'>`,
+                  type: `Omit<QueryOptions<TResponse | undefined>, 'queryKey' | 'queryFn'>`,
                 },
               ],
               statements: [
@@ -277,6 +276,12 @@ export const handlerLegacy: PluginLegacyHandler<SupportedQueryConfig> = ({
                   ],
                   name: queryOptionsFn,
                 }),
+              ],
+              types: [
+                {
+                  default: compiler.typeNode(typeResponse),
+                  name: 'TResponse',
+                },
               ],
             }),
             name: toQueryOptionsName({

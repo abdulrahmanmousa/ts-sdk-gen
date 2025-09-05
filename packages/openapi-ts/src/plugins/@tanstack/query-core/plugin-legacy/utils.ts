@@ -208,11 +208,11 @@ export const createUseItemHook = ({
     }
   })();
 
-  // Determine the hook options parameter type
+  // Determine the hook options parameter type with generic support
   const hookOptionsType =
     hookType === 'useMutation'
-      ? `Omit<MutationOptions<${typeResponse}, ${typeError}, ${typeData}>, 'mutationKey' | 'mutationFn'>`
-      : `Omit<QueryOptions<${typeResponse} | undefined>, 'queryKey' | 'queryFn'>`;
+      ? `Omit<MutationOptions<TResponse, ${typeError}, ${typeData}>, 'mutationKey' | 'mutationFn'>`
+      : `Omit<QueryOptions<TResponse | undefined>, 'queryKey' | 'queryFn'>`;
 
   const useQueryHookStatement = compiler.constVariable({
     exportConst: true,
@@ -246,6 +246,12 @@ export const createUseItemHook = ({
           ],
           name: hookType,
         }),
+      ],
+      types: [
+        {
+          default: compiler.typeNode(typeResponse),
+          name: 'TResponse',
+        },
       ],
     }),
     name: hookName,
