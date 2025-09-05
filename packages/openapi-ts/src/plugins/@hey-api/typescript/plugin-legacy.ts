@@ -507,9 +507,9 @@ const processServiceTypes = ({
                   }
                 : {
                     ...emptyModel,
-                    base: 'unknown',
+                    base: 'any',
                     isRequired: true,
-                    type: 'unknown',
+                    type: 'any',
                   },
             ),
           });

@@ -22,9 +22,9 @@ interface ModelProps extends TypesProps {
 const dataVariableName = 'data';
 
 const isVoidResponse = (response: OperationResponse) =>
-  response.base === 'unknown' &&
+  (response.base === 'unknown' || response.base === 'any') &&
   response.export === 'generic' &&
-  response.type === 'unknown';
+  (response.type === 'unknown' || response.type === 'any');
 
 const getRefModels = ({
   client,

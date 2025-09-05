@@ -600,7 +600,7 @@ const useTypeError = ({
       name: 'DefaultError',
     });
   }
-  if (context.config.client.name === '@ts-sdk-gen/client-axiosios') {
+  if (context.config.client.name === '@ts-sdk-gen/client-axios') {
     const axiosError = file.import({
       asType: true,
       module: 'axios',

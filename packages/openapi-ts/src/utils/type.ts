@@ -27,6 +27,11 @@ const base = (model: Model) => {
     return compiler.typeNode('Date');
   }
 
+  // For legacy clients, use 'any' instead of 'unknown' as fallback
+  if (model.base === 'unknown' && isLegacyClient(config)) {
+    return compiler.typeNode('any');
+  }
+
   return compiler.typeNode(model.base);
 };
 
@@ -144,7 +149,7 @@ const typeUnionOrIntersection = ({
 
 const typeInterface = (model: Model) => {
   if (!model.properties.length) {
-    return compiler.typeNode('unknown');
+    return compiler.typeNode('any');
   }
 
   const config = getConfig();

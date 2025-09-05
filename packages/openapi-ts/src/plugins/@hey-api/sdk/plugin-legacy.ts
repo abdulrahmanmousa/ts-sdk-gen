@@ -104,7 +104,7 @@ export const operationOptionsLegacyParserType = ({
   const optionsName = clientApi.OptionsLegacyParser.name;
   // TODO: refactor this to be more generic, works for now
   if (throwOnError) {
-    return `${optionsName}<${importedType || 'unknown'}, ${throwOnError}>`;
+    return `${optionsName}<${importedType || 'any'}, ${throwOnError}>`;
   }
   return importedType ? `${optionsName}<${importedType}>` : optionsName;
 };
@@ -548,9 +548,9 @@ const toOperationStatements = (
           errorType && responseType
             ? [responseType, errorType, 'ThrowOnError']
             : errorType
-              ? ['unknown', errorType, 'ThrowOnError']
+              ? ['any', errorType, 'ThrowOnError']
               : responseType
-                ? [responseType, 'unknown', 'ThrowOnError']
+                ? [responseType, 'any', 'ThrowOnError']
                 : [],
       }),
     ];

@@ -20,9 +20,11 @@ export const getOperationResponse = ({
   response: OpenApiResponse;
   types: Client['types'];
 }): OperationResponse => {
+  const fallbackType = 'any';
+
   const operationResponse: OperationResponse = {
     $refs: [],
-    base: code !== 204 ? 'unknown' : 'void',
+    base: code !== 204 ? fallbackType : 'void',
     code,
     description: response.description || null,
     enum: [],
@@ -39,7 +41,7 @@ export const getOperationResponse = ({
     properties: [],
     responseTypes: [],
     template: null,
-    type: code !== 204 ? 'unknown' : 'void',
+    type: code !== 204 ? fallbackType : 'void',
   };
 
   if (response.content) {
